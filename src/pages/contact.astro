@@ -1,0 +1,100 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const firstSteps = [
+  {
+    number: "01",
+    title: "Initial call",
+    text: "A 30-minute conversation about your brand, the project, and creative direction. No commitment required.",
+  },
+  {
+    number: "02",
+    title: "Concept proposal",
+    text: "Within 5 working days, a clear creative concept with mood references, treatment direction, and timeline.",
+  },
+  {
+    number: "03",
+    title: "Production",
+    text: "Production runs in close collaboration with regular review milestones until final delivery.",
+  },
+];
+---
+
+<Layout title="Contact — INA">
+  <!-- HERO INVITATION -->
+  <section class="bg-[#FAFAF7] min-h-screen px-6 md:px-10 flex flex-col items-center justify-center text-center">
+    <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-10">
+      Contact
+    </p>
+    <h1 class="font-serif font-light text-[36px] md:text-[72px] text-[#0A0A0A] leading-[1.15] max-w-[900px] mb-14">
+      Let's create something together.
+    </h1>
+    <a
+      href="mailto:ina.studio.creative@gmail.com"
+      class="font-serif font-light text-[22px] md:text-[38px] text-[#0A0A0A] underline underline-offset-[6px] decoration-[0.5px] mb-6"
+    >
+      ina.studio.creative@gmail.com
+    </a>
+    <p class="text-[11px] font-light tracking-[0.2em] text-[#999999] uppercase">
+      Click to copy
+    </p>
+  </section>
+
+  <!-- FIRST STEPS -->
+  <section class="bg-[#F4F4F1] px-6 md:px-10 py-24 md:py-32">
+    <div class="max-w-[1100px] mx-auto">
+      <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-12 md:mb-16 text-center">
+        First steps
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10">
+        {firstSteps.map((step) => (
+          <div class="max-w-[280px] mx-auto md:mx-0">
+            <p class="font-serif italic font-light text-[28px] text-[#0A0A0A]">{step.number}</p>
+            <h3 class="font-serif text-[22px] text-[#0A0A0A] mt-4">{step.title}</h3>
+            <p class="text-[13px] font-light leading-[1.85] text-[#555555] mt-4">
+              {step.text}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK A CALL -->
+  <section class="bg-[#FAFAF7] px-6 md:px-10 py-24 md:py-32 text-center">
+    <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-9">
+      Prefer a call?
+    </p>
+    <h2 class="font-serif font-light text-[28px] md:text-[38px] text-[#0A0A0A] leading-[1.25] max-w-[720px] mx-auto mb-12">
+      Schedule a 30-minute introduction.
+    </h2>
+    <a
+      href="mailto:ina.studio.creative@gmail.com?subject=Initial%20call%20request"
+      class="inline-block border border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-[#FAFAF7] transition-all duration-700 px-12 md:px-14 py-5 md:py-6 text-[13px] md:text-[14px] font-light tracking-[0.15em] uppercase"
+    >
+      Book a call →
+    </a>
+  </section>
+
+  <!-- STUDIO DETAILS -->
+  <section class="bg-[#F4F4F1] px-6 md:px-10 py-20 md:py-28">
+    <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-10">
+      <div>
+        <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-5">
+          Studio
+        </p>
+        <p class="text-[14px] font-light leading-[1.85] text-[#555555] max-w-[360px]">
+          INA is based in Europe, working internationally with brands across luxury, fashion, and product sectors.
+        </p>
+      </div>
+      <div>
+        <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-5">
+          Response time
+        </p>
+        <p class="text-[14px] font-light leading-[1.85] text-[#555555] max-w-[360px]">
+          All inquiries are answered within 48 hours, Monday to Friday.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

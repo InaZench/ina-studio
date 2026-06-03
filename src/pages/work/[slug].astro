@@ -1,0 +1,279 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+// Все проекты — пока статичные данные. Позже это будет заменено на Decap CMS.
+const projects = {
+  "lempreinte": {
+    title: "L'Empreinte",
+    client: "Maison Aurélien",
+    year: "2026",
+    eyebrow: "FRAGRANCE CAMPAIGN",
+    caseNumber: "01",
+    format: "Cinematic teaser + 6 social cuts",
+    delivery: "Spring 2026",
+    objective: "Maison Aurélien approached INA to launch their inaugural fragrance L'Empreinte — a dark, faceted scent built around pomegranate and burnt amber. The brief was to create a teaser film that captures the singular character of the bottle and signals the maison's editorial direction, alongside performance-ready social cuts.",
+    heroNote: "Hero film — 60 seconds — directed and produced by INA",
+    stack: [
+      {
+        name: "Higgsfield Soul 2.0",
+        desc: "Used for the central figure motion in the hero film — generating the model's hand reach toward the bottle.",
+      },
+      {
+        name: "Seedance 2.0",
+        desc: "Used for the cinematic atmospheric shots — fog dissolves, slow pushes, and the closing fade.",
+      },
+      {
+        name: "Nano Banana Pro",
+        desc: "Used for all still imagery referenced in social adaptations — bottle product shots, texture details, key art.",
+      },
+    ],
+    process: [
+      {
+        number: "01",
+        title: "Concept generation",
+        text: "Initial composition explored through Nano Banana Pro — variations of bottle angle, lighting temperature, and surface texture.",
+      },
+      {
+        number: "02",
+        title: "Motion synthesis",
+        text: "Selected stills brought to motion through Higgsfield Soul 2.0 and Seedance 2.0, calibrated for cinematic rhythm.",
+      },
+      {
+        number: "03",
+        title: "Editorial finish",
+        text: "Color grading, micro-cuts, and final sound design applied in post-production for editorial polish.",
+      },
+    ],
+    related: [
+      { title: "Maison Norden", client: "NORDEN SKINCARE — 2026", slug: "maison-norden" },
+      { title: "Atelier Verre", client: "VERRE GLASSWARE — 2025", slug: "atelier-verre" },
+    ],
+  },
+};
+
+export function getStaticPaths() {
+  // Все возможные URL'ы. Сейчас только L'Empreinte имеет данные.
+  // Остальные redirect-нут на /work (404 fallback). Когда добавишь данные — раскомментируй.
+  return [
+    { params: { slug: "lempreinte" } },
+    { params: { slug: "aura-noir" } },
+    { params: { slug: "atelier-verre" } },
+    { params: { slug: "the-nomad" } },
+    { params: { slug: "maison-norden" } },
+    { params: { slug: "primal-forms" } },
+    { params: { slug: "vitreous" } },
+    { params: { slug: "halo" } },
+  ];
+}
+
+const { slug } = Astro.params;
+// Если нет данных для slug — используем L'Empreinte как заглушку
+const project = projects[slug] || projects["lempreinte"];
+---
+
+<Layout title={`${project.title} — INA`}>
+  <!-- HERO -->
+  <section class="relative w-screen h-screen bg-[#0E0E0E] overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] via-[#0E0E0E] to-[#000000]"></div>
+
+    <div class="absolute top-7 right-10 text-[9px] font-light tracking-[0.3em] text-white/45">
+      CASE / {project.caseNumber}
+    </div>
+
+    <div class="relative z-10 flex flex-col justify-end h-full px-6 md:px-10 pb-16 md:pb-20 text-white">
+      <p class="text-[10px] font-light tracking-[0.3em] uppercase text-white/60 mb-5">
+        {project.eyebrow}
+      </p>
+      <h1 class="font-serif font-light leading-[1.05] text-[42px] md:text-[76px]">
+        {project.title}.
+      </h1>
+      <p class="text-[12px] md:text-[14px] font-light tracking-[0.1em] text-white/70 uppercase mt-4">
+        {project.client} — {project.year}
+      </p>
+    </div>
+
+    <div class="absolute bottom-6 right-6 md:bottom-8 md:right-10 text-[10px] font-light tracking-[0.3em] uppercase text-white/50">
+      Scroll ↓
+    </div>
+  </section>
+
+  <!-- BRIEF -->
+  <section class="bg-[#FAFAF7] px-6 md:px-10 py-28 md:py-36">
+    <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-16">
+      <div class="md:col-span-2">
+        <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-5">
+          Brief
+        </p>
+        <div>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#999999] uppercase">Client</span>
+            <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.client}</span>
+          </div>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#999999] uppercase">Format</span>
+            <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.format}</span>
+          </div>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#999999] uppercase">Delivery</span>
+            <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.delivery}</span>
+          </div>
+        </div>
+      </div>
+      <div class="md:col-span-3">
+        <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-5">
+          Objective
+        </p>
+        <p class="font-serif font-light text-[18px] md:text-[22px] leading-[1.5] text-[#0A0A0A]">
+          {project.objective}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN FILM PLACEHOLDER -->
+  <section class="bg-[#0A0A0A]">
+    <div class="w-full bg-[#1A1A1A] flex items-center justify-center" style="aspect-ratio: 16/9;">
+      <div class="w-[50px] h-[50px] rounded-full border border-white/40 flex items-center justify-center">
+        <div class="w-0 h-0 border-l-[10px] border-l-white border-y-[7px] border-y-transparent ml-1"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#FAFAF7] px-6 md:px-10 py-16 md:py-20">
+    <p class="text-[11px] font-light tracking-[0.2em] text-[#888888] uppercase text-center max-w-[880px] mx-auto">
+      {project.heroNote}
+    </p>
+  </section>
+
+  <!-- ADAPTATIONS -->
+  <section class="bg-[#F4F4F1] px-6 md:px-10 py-28 md:py-36">
+    <div class="max-w-[1200px] mx-auto">
+      <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-5 text-center">
+        Adaptations
+      </p>
+      <h2 class="font-serif italic font-light text-[28px] md:text-[38px] text-[#0A0A0A] text-center mb-16 md:mb-20">
+        Six cuts. Three formats.
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+        <div>
+          <div class="bg-[#1A1A1A] flex items-center justify-center" style="aspect-ratio: 9/16;">
+            <div class="w-[40px] h-[40px] rounded-full border border-white/40 flex items-center justify-center">
+              <div class="w-0 h-0 border-l-[8px] border-l-white border-y-[5px] border-y-transparent ml-1"></div>
+            </div>
+          </div>
+          <p class="text-[10px] font-light tracking-[0.25em] text-[#888888] uppercase mt-4 text-center">VERTICAL — 9:16</p>
+          <p class="text-[12px] font-light text-[#555555] text-center mt-2">TikTok / Reels</p>
+        </div>
+        <div>
+          <div class="bg-[#1A1A1A] flex items-center justify-center" style="aspect-ratio: 16/9;">
+            <div class="w-[40px] h-[40px] rounded-full border border-white/40 flex items-center justify-center">
+              <div class="w-0 h-0 border-l-[8px] border-l-white border-y-[5px] border-y-transparent ml-1"></div>
+            </div>
+          </div>
+          <p class="text-[10px] font-light tracking-[0.25em] text-[#888888] uppercase mt-4 text-center">HORIZONTAL — 16:9</p>
+          <p class="text-[12px] font-light text-[#555555] text-center mt-2">YouTube / Cinema</p>
+        </div>
+        <div>
+          <div class="bg-[#1A1A1A] flex items-center justify-center" style="aspect-ratio: 1/1;">
+            <div class="w-[40px] h-[40px] rounded-full border border-white/40 flex items-center justify-center">
+              <div class="w-0 h-0 border-l-[8px] border-l-white border-y-[5px] border-y-transparent ml-1"></div>
+            </div>
+          </div>
+          <p class="text-[10px] font-light tracking-[0.25em] text-[#888888] uppercase mt-4 text-center">SQUARE — 1:1</p>
+          <p class="text-[12px] font-light text-[#555555] text-center mt-2">Instagram Feed</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEHIND THE FRAME -->
+  <section class="bg-[#FAFAF7] px-6 md:px-10 py-28 md:py-36">
+    <div class="max-w-[1100px] mx-auto">
+      <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-5">
+        Process
+      </p>
+      <h2 class="font-serif italic font-light text-[32px] md:text-[42px] text-[#0A0A0A] mb-6">
+        Behind the frame.
+      </h2>
+      <p class="text-[14px] md:text-[15px] font-light leading-[1.85] text-[#555555] max-w-[600px] mb-16 md:mb-20">
+        Each frame is built through a deliberate AI pipeline — concept, generation, refinement, color.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10">
+        {project.process.map((step) => (
+          <div class="max-w-[320px]">
+            <p class="font-serif italic font-light text-[28px] text-[#0A0A0A]">{step.number}</p>
+            <div class="bg-[#1A1A1A] mt-4" style="aspect-ratio: 4/3;"></div>
+            <h3 class="font-serif text-[18px] text-[#0A0A0A] mt-5">{step.title}</h3>
+            <p class="text-[12px] font-light leading-[1.7] text-[#555555] mt-3">
+              {step.text}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK USED -->
+  <section class="bg-[#F4F4F1] px-6 md:px-10 py-24 md:py-32">
+    <div class="max-w-[1100px] mx-auto">
+      <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-5 text-center">
+        Stack used
+      </p>
+      <h2 class="font-serif font-light text-[26px] md:text-[32px] text-[#0A0A0A] text-center mb-14 md:mb-16">
+        Tools of this project.
+      </h2>
+      <div>
+        {project.stack.map((tool, i) => (
+          <div class={`py-7 ${i !== 0 ? "border-t border-black/[0.08]" : ""}`}>
+            <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-0">
+              <div class="md:w-[35%]">
+                <h3 class="font-serif text-[18px] md:text-[22px] text-[#0A0A0A]">{tool.name}</h3>
+              </div>
+              <div class="md:w-[65%]">
+                <p class="text-[13px] font-light leading-[1.8] text-[#555555]">
+                  {tool.desc}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED PROJECTS -->
+  <section class="bg-[#FAFAF7] px-6 md:px-10 py-24 md:py-32">
+    <div class="max-w-[1280px] mx-auto">
+      <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-5">
+        Related
+      </p>
+      <h2 class="font-serif italic font-light text-[26px] md:text-[32px] text-[#0A0A0A] mb-14 md:mb-16">
+        Continue exploring.
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+        {project.related.map((r) => (
+          <a href={`/work/${r.slug}`} class="group block">
+            <div class="bg-[#1A1A1A] transition-transform duration-700 group-hover:scale-[1.02]" style="aspect-ratio: 4/3;"></div>
+            <h3 class="font-serif text-[20px] md:text-[22px] text-[#0A0A0A] mt-5">{r.title}</h3>
+            <p class="text-[11px] font-light tracking-[0.05em] text-[#888888] uppercase mt-2">
+              {r.client}
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT TEASER -->
+  <section class="bg-[#0A0A0A] px-6 md:px-10 py-28 md:py-32 min-h-[480px] flex flex-col items-center justify-center">
+    <h2 class="font-serif font-light text-[28px] md:text-[42px] text-[#FAFAF7] leading-[1.2] text-center mb-10">
+      Let's create something together.
+    </h2>
+    <a
+      href="mailto:ina.studio.creative@gmail.com"
+      class="font-serif font-light text-[22px] md:text-[42px] text-[#FAFAF7] underline underline-offset-[8px] decoration-[0.5px]"
+    >
+      ina.studio.creative@gmail.com
+    </a>
+  </section>
+</Layout>

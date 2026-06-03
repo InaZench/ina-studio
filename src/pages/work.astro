@@ -1,0 +1,73 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const projects = [
+  { title: "L'Empreinte", client: "MAISON AURÉLIEN — 2026", slug: "lempreinte", ratio: "16/10" },
+  { title: "Aura Noir", client: "STILL LIFE — 2026", slug: "aura-noir", ratio: "3/4" },
+  { title: "Atelier Verre", client: "VERRE GLASSWARE — 2025", slug: "atelier-verre", ratio: "3/4" },
+  { title: "The Nomad", client: "CAMPAIGN — 2025", slug: "the-nomad", ratio: "16/10" },
+  { title: "Maison Norden", client: "NORDEN SKINCARE — 2025", slug: "maison-norden", ratio: "16/10" },
+  { title: "Primal Forms", client: "ARCHITECTURE — 2025", slug: "primal-forms", ratio: "3/4" },
+  { title: "Vitreous", client: "EXPERIMENTAL — 2024", slug: "vitreous", ratio: "3/4" },
+  { title: "Halo", client: "HALO SKINCARE — 2024", slug: "halo", ratio: "16/10" },
+];
+---
+
+<Layout title="Work — INA">
+  <!-- PAGE INTRODUCTION -->
+  <section class="bg-[#FAFAF7] px-6 md:px-10 pt-44 md:pt-56 pb-20 md:pb-28">
+    <div class="max-w-[980px] mx-auto text-center">
+      <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-9">
+        Index
+      </p>
+      <h1 class="font-serif italic font-light text-[36px] md:text-[64px] text-[#0A0A0A] leading-[1.15] mb-9">
+        Selected works.
+      </h1>
+      <p class="font-sans text-[15px] md:text-[16px] font-light text-[#555555] leading-relaxed max-w-[600px] mx-auto">
+        A curated collection of cinematic visual content created for European brands across luxury, fashion, and product.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJECT GRID -->
+  <section class="bg-[#FAFAF7] px-6 md:px-10 pb-20 md:pb-32">
+    <div class="max-w-[1280px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+        {projects.map((p, i) => (
+          <a
+            href={`/work/${p.slug}`}
+            class={`group block ${i % 2 === 1 ? "md:mt-32" : ""}`}
+          >
+            <div
+              class={`bg-[#1A1A1A] overflow-hidden mb-6 transition-transform duration-700 group-hover:scale-[1.02]`}
+              style={`aspect-ratio: ${p.ratio};`}
+            ></div>
+            <h3 class="font-serif text-[22px] md:text-[26px] font-normal text-[#0A0A0A] leading-tight">
+              {p.title}
+            </h3>
+            <p class="mt-2 text-[11px] font-light tracking-[0.05em] text-[#888888] uppercase">
+              {p.client}
+            </p>
+          </a>
+        ))}
+      </div>
+
+      <p class="font-serif italic font-light text-[18px] text-[#888888] text-center mt-24 md:mt-32">
+        More work coming in 2026.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT TEASER -->
+  <section class="bg-[#0A0A0A] px-6 md:px-10 py-28 md:py-32 min-h-[480px] flex flex-col items-center justify-center">
+    <h2 class="font-serif font-light text-[28px] md:text-[42px] text-[#FAFAF7] leading-[1.2] text-center mb-10">
+      Let's create something together.
+    </h2>
+    <a
+      href="mailto:ina.studio.creative@gmail.com"
+      class="font-serif font-light text-[22px] md:text-[42px] text-[#FAFAF7] underline underline-offset-[8px] decoration-[0.5px]"
+    >
+      ina.studio.creative@gmail.com
+    </a>
+  </section>
+</Layout>

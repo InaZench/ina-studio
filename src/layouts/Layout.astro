@@ -1,0 +1,169 @@
+---
+import "../styles/global.css";
+
+const { title = "INA — Visual stories for brands", description = "Cinematic visual content crafted with AI for European brands." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body class="bg-[#FAFAF7] text-[#0A0A0A] font-sans antialiased">
+    <!-- TOP NAV — solid backdrop with subtle bottom border -->
+    <nav
+      id="top-nav"
+      class="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 md:px-10 py-5 md:py-6 bg-[#FAFAF7]/85 backdrop-blur-md border-b border-black/[0.04]"
+    >
+      <button
+        id="menu-toggle"
+        aria-label="Open menu"
+        class="flex flex-col gap-[5px] cursor-pointer p-2 -m-2 text-[#0A0A0A]"
+      >
+        <span class="block w-[22px] h-[1px] bg-current"></span>
+        <span class="block w-[22px] h-[1px] bg-current"></span>
+        <span class="block w-[22px] h-[1px] bg-current"></span>
+      </button>
+
+      <a
+        href="/"
+        class="font-serif text-[20px] md:text-[26px] font-light text-[#0A0A0A]"
+        style="letter-spacing: 0.42em;"
+      >
+        INA
+      </a>
+
+      <span class="hidden md:inline text-[11px] font-light tracking-[0.3em] text-[#555555]">
+        AVAILABLE 2026
+      </span>
+      <span class="md:hidden text-[9px] font-light tracking-[0.3em] text-[#555555]">
+        2026
+      </span>
+    </nav>
+
+    <!-- MENU OVERLAY -->
+    <div
+      id="menu-overlay"
+      class="fixed inset-0 z-50 bg-[#FAFAF7] hidden flex-col"
+    >
+      <div class="flex items-center justify-between px-6 md:px-10 py-5 md:py-6">
+        <button
+          id="menu-close"
+          aria-label="Close menu"
+          class="text-[28px] font-light leading-none p-2 -m-2 cursor-pointer"
+        >
+          ×
+        </button>
+        <span
+          class="font-serif text-[20px] md:text-[26px] font-light"
+          style="letter-spacing: 0.42em;"
+        >
+          INA
+        </span>
+        <span class="text-[11px] font-light tracking-[0.3em] text-[#555555]">
+          AVAILABLE 2026
+        </span>
+      </div>
+
+      <div class="flex-1 flex flex-col justify-center md:justify-start md:pt-32 px-10 md:px-20">
+        <nav class="flex flex-col gap-4 md:gap-6">
+          <a
+            href="/work"
+            class="font-serif text-[56px] md:text-[84px] font-light leading-[1.1] hover:text-[#8B6F47] transition-colors duration-700"
+          >
+            Work
+          </a>
+          <a
+            href="/about"
+            class="font-serif text-[56px] md:text-[84px] font-light leading-[1.1] hover:text-[#8B6F47] transition-colors duration-700"
+          >
+            About
+          </a>
+          <a
+            href="/contact"
+            class="font-serif text-[56px] md:text-[84px] font-light leading-[1.1] hover:text-[#8B6F47] transition-colors duration-700"
+          >
+            Contact
+          </a>
+        </nav>
+      </div>
+
+      <div class="px-10 md:px-20 pb-12 md:pb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-3">
+            Get in touch
+          </p>
+          <a
+            href="mailto:ina.studio.creative@gmail.com"
+            class="font-sans text-[14px] underline underline-offset-4"
+          >
+            ina.studio.creative@gmail.com
+          </a>
+        </div>
+        <div>
+          <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-3">
+            Studio
+          </p>
+          <p class="text-[13px] text-[#555555] leading-relaxed">
+            Based in Europe<br />Working internationally
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE CONTENT -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-[#FAFAF7] border-t border-black/[0.08] px-6 md:px-10 py-8 md:py-9"
+    >
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <span class="text-[11px] font-light tracking-[0.2em] text-[#999999]">
+          INA
+        </span>
+        <nav class="flex gap-7 text-[10px] font-light tracking-[0.2em] text-[#999999] uppercase">
+          <a href="/work" class="hover:text-[#0A0A0A] transition-colors">Work</a>
+          <a href="/about" class="hover:text-[#0A0A0A] transition-colors">About</a>
+          <a href="/contact" class="hover:text-[#0A0A0A] transition-colors">Contact</a>
+        </nav>
+        <span class="text-[11px] font-light tracking-[0.15em] text-[#999999]">
+          © 2026 INA STUDIO. ALL RIGHTS RESERVED.
+        </span>
+      </div>
+    </footer>
+
+    <!-- MENU TOGGLE SCRIPT -->
+    <script>
+      const toggle = document.getElementById("menu-toggle");
+      const close = document.getElementById("menu-close");
+      const overlay = document.getElementById("menu-overlay");
+
+      toggle?.addEventListener("click", () => {
+        overlay?.classList.remove("hidden");
+        overlay?.classList.add("flex");
+        document.body.style.overflow = "hidden";
+      });
+
+      close?.addEventListener("click", () => {
+        overlay?.classList.add("hidden");
+        overlay?.classList.remove("flex");
+        document.body.style.overflow = "";
+      });
+    </script>
+  </body>
+</html>
