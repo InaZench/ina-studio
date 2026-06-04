@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
+const base = import.meta.env.BASE_URL;
+
 // Все проекты — пока статичные данные. Позже это будет заменено на Decap CMS.
 const projects = {
   "lempreinte": {
@@ -52,8 +54,6 @@ const projects = {
 };
 
 export function getStaticPaths() {
-  // Все возможные URL'ы. Сейчас только L'Empreinte имеет данные.
-  // Остальные redirect-нут на /work (404 fallback). Когда добавишь данные — раскомментируй.
   return [
     { params: { slug: "lempreinte" } },
     { params: { slug: "aura-noir" } },
@@ -67,7 +67,6 @@ export function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-// Если нет данных для slug — используем L'Empreinte как заглушку
 const project = projects[slug] || projects["lempreinte"];
 ---
 
@@ -252,7 +251,7 @@ const project = projects[slug] || projects["lempreinte"];
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
         {project.related.map((r) => (
-          <a href={`/work/${r.slug}`} class="group block">
+          <a href={`${base}work/${r.slug}`} class="group block">
             <div class="bg-[#1A1A1A] transition-transform duration-700 group-hover:scale-[1.02]" style="aspect-ratio: 4/3;"></div>
             <h3 class="font-serif text-[20px] md:text-[22px] text-[#0A0A0A] mt-5">{r.title}</h3>
             <p class="text-[11px] font-light tracking-[0.05em] text-[#888888] uppercase mt-2">

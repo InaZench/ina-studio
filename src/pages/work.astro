@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+const base = import.meta.env.BASE_URL;
+
 const projects = [
   { title: "L'Empreinte", client: "MAISON AURÉLIEN — 2026", slug: "lempreinte", ratio: "16/10" },
   { title: "Aura Noir", client: "STILL LIFE — 2026", slug: "aura-noir", ratio: "3/4" },
@@ -35,7 +37,7 @@ const projects = [
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
         {projects.map((p, i) => (
           <a
-            href={`/work/${p.slug}`}
+            href={`${base}work/${p.slug}`}
             class={`group block ${i % 2 === 1 ? "md:mt-32" : ""}`}
           >
             <div
