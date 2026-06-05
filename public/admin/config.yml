@@ -1,0 +1,24 @@
+backend:
+  name: github
+  repo: InaZench/ina-studio
+  branch: main
+
+media_folder: public/images/projects
+public_folder: /images/projects
+
+collections:
+  - name: projects
+    label: Projects
+    folder: src/content/projects
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Client, name: client, widget: string }
+      - { label: Year, name: year, widget: string }
+      - { label: Eyebrow, name: eyebrow, widget: string }
+      - { label: Case Number, name: caseNumber, widget: string }
+      - { label: Format, name: format, widget: string }
+      - { label: Delivery, name: delivery, widget: string }
+      - { label: Objective, name: objective, widget: text }
+      - { label: Hero Note, name: heroNote, widget: string }
