@@ -3,7 +3,8 @@ import "../styles/global.css";
 
 const { title = "INA — Visual stories for brands", description = "Cinematic visual content crafted with AI for European brands." } = Astro.props;
 
-const base = import.meta.env.BASE_URL;
+const baseRaw = import.meta.env.BASE_URL;
+const base = baseRaw.endsWith("/") ? baseRaw : baseRaw + "/";
 ---
 
 <!DOCTYPE html>
