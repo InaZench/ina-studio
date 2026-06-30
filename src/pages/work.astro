@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
-
-const projects = [
+const staticProjects = [
   { title: "L'Empreinte", client: "MAISON AURÉLIEN — 2026", slug: "lempreinte", ratio: "16/10" },
   { title: "Aura Noir", client: "STILL LIFE — 2026", slug: "aura-noir", ratio: "3/4" },
   { title: "Atelier Verre", client: "VERRE GLASSWARE — 2025", slug: "atelier-verre", ratio: "3/4" },
@@ -12,6 +12,16 @@ const projects = [
   { title: "Vitreous", client: "EXPERIMENTAL — 2024", slug: "vitreous", ratio: "3/4" },
   { title: "Halo", client: "HALO SKINCARE — 2024", slug: "halo", ratio: "16/10" },
 ];
+
+const cmsEntries = await getCollection("projects");
+const cmsProjects = cmsEntries.map((entry) => ({
+  title: entry.data.title,
+  client: `${entry.data.eyebrow} — ${entry.data.year}`,
+  slug: entry.id,
+  ratio: "16/10",
+}));
+
+const projects = [...cmsProjects, ...staticProjects];
 ---
 
 <Layout title="Work — INA">

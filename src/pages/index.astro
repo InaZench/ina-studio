@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
-
-const selectedWork = [
+const staticWork = [
   {
     title: "L'Empreinte",
     client: "MAISON AURÉLIEN — 2026",
@@ -24,6 +24,15 @@ const selectedWork = [
     slug: "maison-norden",
   },
 ];
+
+const cmsEntries = await getCollection("projects");
+const cmsWork = cmsEntries.map((entry) => ({
+  title: entry.data.title,
+  client: `${entry.data.eyebrow} — ${entry.data.year}`,
+  slug: entry.id,
+}));
+
+const selectedWork = [...cmsWork, ...staticWork].slice(0, 4);
 ---
 
 <Layout title="INA — Visual stories for brands">
