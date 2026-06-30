@@ -104,11 +104,21 @@ const project = cmsData
   </section>
 
   <section class="bg-[#0A0A0A]">
-    <div class="w-full bg-[#1A1A1A] flex items-center justify-center" style="aspect-ratio: 16/9;">
-      <div class="w-[50px] h-[50px] rounded-full border border-white/40 flex items-center justify-center">
-        <div class="w-0 h-0 border-l-[10px] border-l-white border-y-[7px] border-y-transparent ml-1"></div>
+    {project.heroVideo ? (
+      <video
+        class="w-full"
+        style="aspect-ratio: 16/9; object-fit: cover;"
+        src={project.heroVideo}
+        controls
+        playsinline
+      />
+    ) : (
+      <div class="w-full bg-[#1A1A1A] flex items-center justify-center" style="aspect-ratio: 16/9;">
+        <div class="w-[50px] h-[50px] rounded-full border border-white/40 flex items-center justify-center">
+          <div class="w-0 h-0 border-l-[10px] border-l-white border-y-[7px] border-y-transparent ml-1"></div>
+        </div>
       </div>
-    </div>
+    )}
   </section>
 
   <section class="bg-[#FAFAF7] px-6 md:px-10 py-16 md:py-20">
