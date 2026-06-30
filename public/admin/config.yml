@@ -22,3 +22,4 @@ collections:
       - { label: Delivery, name: delivery, widget: string }
       - { label: Objective, name: objective, widget: text }
       - { label: Hero Note, name: heroNote, widget: string }
+      - { label: Hero Video, name: heroVideo, widget: file, required: false, media_folder: public/videos/projects, public_folder: /videos/projects }
