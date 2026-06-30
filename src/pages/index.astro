@@ -30,6 +30,7 @@ const cmsWork = cmsEntries.map((entry) => ({
   title: entry.data.title,
   client: `${entry.data.eyebrow} — ${entry.data.year}`,
   slug: entry.id,
+  coverImage: entry.data.coverImage,
 }));
 
 const selectedWork = [...cmsWork, ...staticWork].slice(0, 4);
@@ -84,6 +85,7 @@ const selectedWork = [...cmsWork, ...staticWork].slice(0, 4);
               class={`bg-[#1A1A1A] overflow-hidden mb-6 transition-transform duration-700 group-hover:scale-[1.02] ${
                 i % 2 === 0 ? "aspect-[16/10]" : "aspect-[3/4]"
               }`}
+              style={project.coverImage ? `background-image: url('${project.coverImage}'); background-size: cover; background-position: center;` : ""}
             ></div>
             <h3 class="font-serif text-[24px] md:text-[26px] font-normal text-[#0A0A0A] leading-tight">
               {project.title}

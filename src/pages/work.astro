@@ -19,6 +19,7 @@ const cmsProjects = cmsEntries.map((entry) => ({
   client: `${entry.data.eyebrow} — ${entry.data.year}`,
   slug: entry.id,
   ratio: "16/10",
+  coverImage: entry.data.coverImage,
 }));
 
 const projects = [...cmsProjects, ...staticProjects];
@@ -49,7 +50,7 @@ const projects = [...cmsProjects, ...staticProjects];
           >
             <div
               class={`bg-[#1A1A1A] overflow-hidden mb-6 transition-transform duration-700 group-hover:scale-[1.02]`}
-              style={`aspect-ratio: ${p.ratio};`}
+              style={`aspect-ratio: ${p.ratio};${p.coverImage ? ` background-image: url('${p.coverImage}'); background-size: cover; background-position: center;` : ""}`}
             ></div>
             <h3 class="font-serif text-[22px] md:text-[26px] font-normal text-[#0A0A0A] leading-tight">
               {p.title}
