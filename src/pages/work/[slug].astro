@@ -106,8 +106,8 @@ const project = cmsData
   <section class="bg-[#0A0A0A]">
     {project.heroVideo ? (
       <video
-        class="w-full"
-        style="aspect-ratio: 16/9; object-fit: contain; background: #0A0A0A;"
+        class="block w-full"
+        style="max-height: calc(100vh - 100px); object-fit: contain; background: #0A0A0A;"
         src={project.heroVideo}
         controls
         playsinline
