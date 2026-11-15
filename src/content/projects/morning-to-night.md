@@ -11,6 +11,5 @@ heroNote: AI-generated ad film — concept, generation and editing by INA
 heroVideo: /videos/projects/Morning_to_Night_4x5.mp4
 verticalVideo: /videos/projects/Morning_to_Night_9x16.mp4
 verticalEyebrow: Vertical version
-verticalCaption: Stories / Reels — 9:16
 coverImage: /images/projects/morning-to-night-cover.jpg
 ---
