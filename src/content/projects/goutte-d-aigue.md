@@ -13,6 +13,8 @@ objective: |-
   Water Lily · Freesia · White Tea
   Ambrette · Cedarwood · White Musk
 heroNote: AI-generated teaser film — concept, generation and editing by INA
-heroVideo: /videos/projects/Goutte_dAigue_9x16.mp4
+heroVideo: /videos/projects/Goutte_dAigue.mp4
+verticalVideo: /videos/projects/Goutte_dAigue_9x16.mp4
+verticalCaption: Vertical film — 9:16
 coverImage: /images/projects/goutte-dAigue-cover.png
 ---

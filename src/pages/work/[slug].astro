@@ -77,6 +77,7 @@ const project = cmsData
     </div>
   </section>
 
+  {!project.verticalVideo && (
   <section class="bg-[#FAFAF7] px-6 md:px-10 py-28 md:py-36">
     <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-20 lg:gap-28">
       <div class="md:col-span-2">
@@ -102,6 +103,7 @@ const project = cmsData
       </div>
     </div>
   </section>
+  )}
 
   <section class="bg-[#0A0A0A]">
     {project.heroVideo ? (
@@ -124,6 +126,54 @@ const project = cmsData
   <section class="bg-[#FAFAF7] px-6 md:px-10 py-16 md:py-20">
     <p class="text-[11px] font-light tracking-[0.2em] text-[#888888] uppercase text-center max-w-[880px] mx-auto">{project.heroNote}</p>
   </section>
+  {project.verticalVideo && (
+  <section class="bg-[#FAFAF7] px-6 md:px-10 pt-4 md:pt-6 pb-24 md:pb-32">
+    <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-20 lg:gap-28">
+      <div class="md:col-span-2">
+        <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-5">Brief</p>
+        <div>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#999999] uppercase">Client</span>
+            <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.client}</span>
+          </div>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#999999] uppercase">Format</span>
+            <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.format}</span>
+          </div>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#999999] uppercase">Delivery</span>
+            <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.delivery}</span>
+          </div>
+        </div>
+      </div>
+      <div class="md:col-span-3">
+        <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-5">Objective</p>
+        <p class="font-serif font-light text-[18px] md:text-[22px] leading-[1.5] text-[#0A0A0A] whitespace-pre-line">{project.objective}</p>
+      </div>
+    </div>
+  </section>
+  )}
+  {project.verticalVideo && (
+    <section class="bg-[#F4F4F1] px-6 md:px-10 py-24 md:py-32">
+      <div class="max-w-[1200px] mx-auto">
+        <p class={`text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase text-center ${project.verticalTitle ? "mb-5" : "mb-10 md:mb-12"}`}>Also in this campaign</p>
+        {project.verticalTitle && (
+          <h2 class="font-serif italic font-light text-[28px] md:text-[38px] text-[#0A0A0A] text-center mb-12 md:mb-16">{project.verticalTitle}</h2>
+        )}
+        <div class="mx-auto w-full max-w-[380px]">
+          <video
+            class="block w-full bg-[#0A0A0A]"
+            style="aspect-ratio: 9/16; object-fit: cover;"
+            src={project.verticalVideo}
+            controls
+            playsinline
+            preload="metadata"
+          />
+          <p class="text-[10px] font-light tracking-[0.25em] text-[#888888] uppercase mt-5 text-center">{project.verticalCaption || "Vertical film — 9:16"}</p>
+        </div>
+      </div>
+    </section>
+  )}
 
   {!cmsData && (
   <section class="bg-[#F4F4F1] px-6 md:px-10 py-28 md:py-36">

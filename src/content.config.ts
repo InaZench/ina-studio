@@ -14,6 +14,9 @@ const projects = defineCollection({
     objective: z.string(),
     heroNote: z.string(),
     heroVideo: z.string().optional(),
+    verticalVideo: z.string().optional(),
+    verticalTitle: z.string().optional(),
+    verticalCaption: z.string().optional(),
     coverImage: z.string().optional(),
   }),
 });
