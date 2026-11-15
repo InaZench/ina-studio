@@ -78,7 +78,7 @@ const project = cmsData
   </section>
 
   <section class="bg-[#FAFAF7] px-6 md:px-10 py-28 md:py-36">
-    <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-16">
+    <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-20 lg:gap-28">
       <div class="md:col-span-2">
         <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-5">Brief</p>
         <div>
@@ -98,7 +98,7 @@ const project = cmsData
       </div>
       <div class="md:col-span-3">
         <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-5">Objective</p>
-        <p class="font-serif font-light text-[18px] md:text-[22px] leading-[1.5] text-[#0A0A0A]">{project.objective}</p>
+        <p class="font-serif font-light text-[18px] md:text-[22px] leading-[1.5] text-[#0A0A0A] whitespace-pre-line">{project.objective}</p>
       </div>
     </div>
   </section>
@@ -125,6 +125,7 @@ const project = cmsData
     <p class="text-[11px] font-light tracking-[0.2em] text-[#888888] uppercase text-center max-w-[880px] mx-auto">{project.heroNote}</p>
   </section>
 
+  {!cmsData && (
   <section class="bg-[#F4F4F1] px-6 md:px-10 py-28 md:py-36">
     <div class="max-w-[1200px] mx-auto">
       <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-5 text-center">Adaptations</p>
@@ -160,6 +161,7 @@ const project = cmsData
       </div>
     </div>
   </section>
+  )}
 
   {project.process && project.process.length > 0 && (
     <section class="bg-[#FAFAF7] px-6 md:px-10 py-28 md:py-36">
