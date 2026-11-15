@@ -2,28 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
-const staticWork = [
-  {
-    title: "L'Empreinte",
-    client: "MAISON AURÉLIEN — 2026",
-    slug: "lempreinte",
-  },
-  {
-    title: "Aura Noir",
-    client: "STILL LIFE — 2026",
-    slug: "aura-noir",
-  },
-  {
-    title: "The Nomad",
-    client: "CAMPAIGN — 2025",
-    slug: "the-nomad",
-  },
-  {
-    title: "Maison Norden",
-    client: "NORDEN SKINCARE — 2025",
-    slug: "maison-norden",
-  },
-];
 
 const cmsEntries = await getCollection("projects");
 const cmsWork = cmsEntries.map((entry) => ({
@@ -33,7 +11,7 @@ const cmsWork = cmsEntries.map((entry) => ({
   coverImage: entry.data.coverImage,
 }));
 
-const selectedWork = [...cmsWork, ...staticWork].slice(0, 4);
+const selectedWork = cmsWork.slice(0, 4);
 ---
 
 <Layout title="INA — Visual stories for brands">

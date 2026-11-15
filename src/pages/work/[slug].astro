@@ -5,11 +5,7 @@ import { getCollection } from "astro:content";
 export async function getStaticPaths() {
   const cmsProjects = await getCollection("projects");
   
-  const staticSlugs = [
-    "lempreinte", "aura-noir", "atelier-verre",
-    "the-nomad", "maison-norden", "primal-forms",
-    "vitreous", "halo"
-  ];
+  const staticSlugs: string[] = []; // демо-проекты шаблона убраны
 
   const cmsPaths = cmsProjects.map((entry) => ({
     params: { slug: entry.id },
@@ -156,7 +152,7 @@ const project = cmsData
   {project.verticalVideo && (
     <section class="bg-[#F4F4F1] px-6 md:px-10 py-24 md:py-32">
       <div class="max-w-[1200px] mx-auto">
-        <p class={`text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase text-center ${project.verticalTitle ? "mb-5" : "mb-10 md:mb-12"}`}>Also in this campaign</p>
+        <p class={`text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase text-center ${project.verticalTitle ? "mb-5" : "mb-10 md:mb-12"}`}>{project.verticalEyebrow || "Also in this campaign"}</p>
         {project.verticalTitle && (
           <h2 class="font-serif italic font-light text-[28px] md:text-[38px] text-[#0A0A0A] text-center mb-12 md:mb-16">{project.verticalTitle}</h2>
         )}
