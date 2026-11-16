@@ -40,7 +40,7 @@ const { title = "INA — Visual stories for brands", description = "Cinematic vi
 
       <a
         href="/"
-        class="absolute left-1/2 -translate-x-1/2 font-serif text-[20px] md:text-[26px] font-light text-[#0A0A0A]"
+        class="absolute left-1/2 -translate-x-1/2 font-serif text-[20px] md:text-[26px] font-light text-[#0A0A0A] hover:text-[#8B6F47] transition-colors duration-700"
         style="letter-spacing: 0.42em; padding-left: 0.42em;"
       >
         INA
@@ -111,19 +111,14 @@ const { title = "INA — Visual stories for brands", description = "Cinematic vi
           </p>
           <a
             href="mailto:ina.studio.creative@gmail.com"
-            class="font-sans text-[14px] underline underline-offset-4"
+            class="font-sans text-[14px] underline underline-offset-4 hover:text-[#8B6F47] transition-colors duration-700"
           >
             ina.studio.creative@gmail.com
           </a>
         </div>
-        <div>
-          <p class="text-[10px] font-light tracking-[0.3em] text-[#999999] uppercase mb-3">
-            Studio
-          </p>
-          <p class="text-[13px] text-[#555555] leading-relaxed">
-            Based in Europe<br />Working internationally
-          </p>
-        </div>
+        <p class="font-serif italic font-light text-[17px] md:text-[19px] leading-[1.3] text-[#0A0A0A] md:text-right">
+          Let's create<br />something together.
+        </p>
       </div>
     </div>
 
@@ -141,9 +136,9 @@ const { title = "INA — Visual stories for brands", description = "Cinematic vi
           INA
         </span>
         <nav class="flex gap-7 text-[10px] font-light tracking-[0.2em] text-[#999999] uppercase">
-          <a href="/work" class="hover:text-[#0A0A0A] transition-colors">Work</a>
-          <a href="/about" class="hover:text-[#0A0A0A] transition-colors">About</a>
-          <a href="/contact" class="hover:text-[#0A0A0A] transition-colors">Contact</a>
+          <a href="/work" class="hover:text-[#8B6F47] transition-colors duration-700">Work</a>
+          <a href="/about" class="hover:text-[#8B6F47] transition-colors duration-700">About</a>
+          <a href="/contact" class="hover:text-[#8B6F47] transition-colors duration-700">Contact</a>
         </nav>
         <span class="text-[11px] font-light tracking-[0.15em] text-[#999999]">
           © 2026 INA STUDIO. ALL RIGHTS RESERVED.
@@ -167,6 +162,38 @@ const { title = "INA — Visual stories for brands", description = "Cinematic vi
         overlay?.classList.add("hidden");
         overlay?.classList.remove("flex");
         document.body.style.overflow = "";
+      });
+    </script>
+    <!-- COPY EMAIL ON CLICK -->
+    <div id="copy-toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[60] px-5 py-3 bg-[#0A0A0A] text-[#FAFAF7] text-[10px] font-light tracking-[0.3em] uppercase pointer-events-none opacity-0 transition-opacity duration-500">Copied</div>
+    <script>
+      const toast = document.getElementById("copy-toast");
+      let toastTimer;
+      const copyText = async (text) => {
+        try { await navigator.clipboard.writeText(text); return true; }
+        catch {
+          const ta = document.createElement("textarea");
+          ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta); ta.select();
+          const ok = document.execCommand("copy"); ta.remove(); return ok;
+        }
+      };
+      document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+        link.addEventListener("click", async (e) => {
+          e.preventDefault();
+          const address = link.getAttribute("href").replace("mailto:", "").split("?")[0];
+          if (!(await copyText(address))) return;
+          const hint = link.parentElement?.querySelector("[data-copy-hint]");
+          if (hint) {
+            const original = hint.dataset.copyHint;
+            hint.textContent = "Copied";
+            setTimeout(() => { hint.textContent = original; }, 2000);
+          } else if (toast) {
+            toast.style.opacity = "1";
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => { toast.style.opacity = "0"; }, 2000);
+          }
+        });
       });
     </script>
   </body>
