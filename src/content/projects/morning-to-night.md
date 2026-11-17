@@ -12,4 +12,5 @@ heroVideo: /videos/projects/Morning_to_Night_4x5.mp4
 verticalVideo: /videos/projects/Morning_to_Night_9x16.mp4
 verticalEyebrow: Vertical version
 coverImage: /images/projects/morning-to-night-cover.jpg
+pageLayout: stacked
 ---

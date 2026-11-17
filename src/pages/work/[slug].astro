@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import CaseStacked from "../../components/CaseStacked.astro";
 
 export async function getStaticPaths() {
   const cmsProjects = await getCollection("projects");
@@ -56,6 +57,10 @@ const project = cmsData
 ---
 
 <Layout title={`${project.title} — INA`}>
+  {project.pageLayout === "stacked" ? (
+  <CaseStacked project={project} />
+  ) : (
+  <Fragment>
   <section class="relative w-screen h-screen bg-[#0E0E0E] overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] via-[#0E0E0E] to-[#000000]"></div>
     <div class="absolute top-7 right-10 text-[9px] font-light tracking-[0.3em] text-white/45">
@@ -280,4 +285,6 @@ const project = cmsData
       ina.studio.creative@gmail.com
     </a>
   </section>
+  </Fragment>
+  )}
 </Layout>

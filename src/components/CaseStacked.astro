@@ -1,0 +1,84 @@
+---
+// Раскладка кейса «стопкой» (включается в проекте полем pageLayout: stacked):
+// ролик → текст между роликами → вертикальный ролик → почта.
+// Ролики на основном молочном #EFEAE0, текст и почта — на более тёмном #E9E3D7.
+// Отступы ролик ↔ тёмный блок одинаковые: 80 px (телефон) / 112 px (компьютер).
+const { project } = Astro.props;
+---
+<h1 class="sr-only">{project.title}</h1>
+
+{project.heroVideo && (
+  <section class="bg-[#EFEAE0] px-6 md:px-10 pt-[104px] md:pt-[128px] pb-20 md:pb-28">
+    <video
+      class="block mx-auto max-w-full"
+      style="max-height: calc(100vh - 168px); aspect-ratio: 4/5; background: #EFEAE0;"
+      src={project.heroVideo}
+      controls
+      playsinline
+      preload="metadata"
+    />
+  </section>
+)}
+
+<section class="bg-[#E9E3D7] px-6 md:px-10 py-24 md:py-32">
+  {project.heroNote && (
+    <p class="text-[11px] font-light tracking-[0.2em] text-[#8C8579] uppercase text-center max-w-[880px] mx-auto mb-16 md:mb-24">{project.heroNote}</p>
+  )}
+  <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-20 lg:gap-28 md:items-center">
+    <div class="md:col-span-2">
+      <p class="text-[10px] font-light tracking-[0.3em] text-[#8C8579] uppercase mb-5">Brief</p>
+      <div>
+        <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
+          <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Client</span>
+          <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.client}</span>
+        </div>
+        <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
+          <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Format</span>
+          <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.format}</span>
+        </div>
+        <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
+          <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Delivery</span>
+          <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.delivery}</span>
+        </div>
+      </div>
+    </div>
+    <div class="md:col-span-3">
+      <p class="font-serif font-light text-[18px] md:text-[22px] leading-[1.5] text-[#0A0A0A] whitespace-pre-line">{project.objective}</p>
+    </div>
+  </div>
+</section>
+
+{project.verticalVideo && (
+  <section class="bg-[#EFEAE0] px-6 md:px-10 pt-20 md:pt-28 pb-[41px] md:pb-[69px]">
+    <div class="mx-auto w-full max-w-[380px]">
+      <video
+        class="block w-full"
+        style="aspect-ratio: 9/16; object-fit: cover; background: #EFEAE0;"
+        src={project.verticalVideo}
+        controls
+        playsinline
+        preload="metadata"
+      />
+      <!-- подпись под роликом; от низа ролика до блока с почтой всего 80 / 112 px, как у верхнего ролика -->
+      <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#8C8579] uppercase text-center mt-6 md:mt-7">{project.verticalEyebrow || "Also in this campaign"}</p>
+      {project.verticalCaption && (
+        <p class="text-[10px] font-light tracking-[0.25em] text-[#8C8579] uppercase mt-3 text-center">{project.verticalCaption}</p>
+      )}
+    </div>
+  </section>
+)}
+
+<section class="bg-[#E9E3D7] px-6 md:px-10 py-28 md:py-32 min-h-[480px] flex flex-col items-center justify-center">
+  <h2 class="font-serif font-light text-[28px] md:text-[42px] text-[#0A0A0A] leading-[1.2] text-center mb-10">
+    Let's create something together.
+  </h2>
+  <a
+    href="mailto:ina.studio.creative@gmail.com"
+    class="font-serif font-light text-[22px] md:text-[42px] text-[#0A0A0A] underline underline-offset-[8px] decoration-[0.5px] mb-6 hover:text-[#8B6F47] transition-colors duration-700"
+  >
+    ina.studio.creative@gmail.com
+  </a>
+  <p class="text-[11px] font-light tracking-[0.2em] pl-[0.2em] text-[#8C8579] uppercase">
+    Click to write
+  </p>
+</section>

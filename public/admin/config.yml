@@ -28,3 +28,4 @@ collections:
       - { label: Vertical Video Title, name: verticalTitle, widget: string, required: false }
       - { label: Vertical Video Caption, name: verticalCaption, widget: string, required: false }
       - { label: Cover Image, name: coverImage, widget: file, required: false, media_folder: /public/images/projects, public_folder: /images/projects }
+      - { label: Page Layout, name: pageLayout, widget: select, options: [classic, stacked], required: false, hint: "stacked — ролик, текст, вертикальный ролик, почта на молочном фоне" }

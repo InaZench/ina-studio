@@ -19,6 +19,7 @@ const projects = defineCollection({
     verticalTitle: z.string().optional(),
     verticalCaption: z.string().optional(),
     coverImage: z.string().optional(),
+    pageLayout: z.enum(['classic', 'stacked']).optional(),
   }),
 });
 
