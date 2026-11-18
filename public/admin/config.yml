@@ -24,6 +24,8 @@ collections:
       - { label: Hero Note, name: heroNote, widget: string }
       - { label: Hero Video, name: heroVideo, widget: file, required: false, media_folder: /public/videos/projects, public_folder: /videos/projects }
       - { label: Hero Video Label, name: heroLabel, widget: string, required: false }
+      - { label: Hero Video Poster, name: heroPoster, widget: image, required: false, media_folder: /public/images/projects, public_folder: /images/projects }
+      - { label: Vertical Video Poster, name: verticalPoster, widget: image, required: false, media_folder: /public/images/projects, public_folder: /images/projects }
       - { label: Vertical Video (9:16), name: verticalVideo, widget: file, required: false, media_folder: /public/videos/projects, public_folder: /videos/projects }
       - { label: Vertical Video Eyebrow, name: verticalEyebrow, widget: string, required: false }
       - { label: Vertical Video Title, name: verticalTitle, widget: string, required: false }

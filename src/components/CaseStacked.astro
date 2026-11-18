@@ -18,12 +18,13 @@ const { project } = Astro.props;
           class="block w-full"
           style="aspect-ratio: 4/5; object-fit: contain; background: #0A0A0A;"
           src={project.heroVideo}
+          poster={project.heroPoster}
           controls
           playsinline
           preload="metadata"
         />
         {project.heroLabel && (
-          <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#8C8579] uppercase mt-6">{project.heroLabel}</p>
+          <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#8C8579] uppercase text-center mt-6">{project.heroLabel}</p>
         )}
       </div>
     )}
@@ -37,13 +38,14 @@ const { project } = Astro.props;
           class="block w-full"
           style="aspect-ratio: 9/16; object-fit: contain; background: #0A0A0A;"
           src={project.verticalVideo}
+          poster={project.verticalPoster}
           controls
           playsinline
           preload="metadata"
         />
-        <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#8C8579] uppercase mt-6">{project.verticalEyebrow || "Also in this campaign"}</p>
+        <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#8C8579] uppercase text-center mt-6">{project.verticalEyebrow || "Also in this campaign"}</p>
         {project.verticalCaption && (
-          <p class="text-[10px] font-light tracking-[0.25em] text-[#8C8579] uppercase mt-3">{project.verticalCaption}</p>
+          <p class="text-[10px] font-light tracking-[0.25em] text-[#8C8579] uppercase text-center mt-3">{project.verticalCaption}</p>
         )}
       </div>
     )}

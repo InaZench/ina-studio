@@ -10,8 +10,10 @@ objective: The whole city, from first light to last, in the palm of your hand.
 heroNote: AI-generated ad films — concept, generation and editing by INA
 heroVideo: /videos/projects/Morning_to_Night_4x5.mp4
 heroLabel: Feed version
+heroPoster: /images/projects/morning-to-night-poster-4x5.jpg
 verticalVideo: /videos/projects/Morning_to_Night_9x16.mp4
 verticalEyebrow: Vertical version
+verticalPoster: /images/projects/morning-to-night-poster-9x16.jpg
 coverImage: /images/projects/morning-to-night-cover.jpg
 pageLayout: stacked
 ---
