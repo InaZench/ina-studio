@@ -17,6 +17,6 @@ heroVideo: /videos/projects/0706.mp4
 coverImage: /images/projects/cendreline-cover.jpg
 heroAspect: 4/3
 pageLayout: stacked
-nextProject: morning-to-night
+nextProject: goutte-d-aigue
 heroPoster: /images/projects/cendreline-poster-4x3.jpg
 ---

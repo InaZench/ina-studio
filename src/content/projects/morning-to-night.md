@@ -17,5 +17,5 @@ verticalEyebrow: Vertical version
 verticalPoster: /images/projects/morning-to-night-poster-9x16.jpg
 coverImage: /images/projects/morning-to-night-cover.jpg
 pageLayout: stacked
-nextProject: goutte-d-aigue
+nextProject: cendreline
 ---

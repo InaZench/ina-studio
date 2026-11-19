@@ -20,7 +20,7 @@ heroAspect: 16/9
 heroLabel: Horizontal version
 verticalEyebrow: Vertical version
 pageLayout: stacked
-nextProject: cendreline
+nextProject: morning-to-night
 heroPoster: /images/projects/goutte-d-aigue-poster-16x9.jpg
 verticalPoster: /images/projects/goutte-d-aigue-poster-9x16.jpg
 ---
