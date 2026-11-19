@@ -18,4 +18,5 @@ coverImage: /images/projects/cendreline-cover.jpg
 heroAspect: 4/3
 pageLayout: stacked
 nextProject: morning-to-night
+heroPoster: /images/projects/cendreline-poster-4x3.jpg
 ---

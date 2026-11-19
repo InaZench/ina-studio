@@ -21,4 +21,6 @@ heroLabel: Horizontal version
 verticalEyebrow: Vertical version
 pageLayout: stacked
 nextProject: cendreline
+heroPoster: /images/projects/goutte-d-aigue-poster-16x9.jpg
+verticalPoster: /images/projects/goutte-d-aigue-poster-9x16.jpg
 ---
