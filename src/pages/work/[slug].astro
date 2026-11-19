@@ -56,7 +56,7 @@ const project = cmsData
   : (fallbackData[slug] || fallbackData["lempreinte"]);
 ---
 
-<Layout title={`${project.title} — INA`} minimalFooter={project.pageLayout === "stacked"}>
+<Layout title={`${project.title} — INA`}>
   {project.pageLayout === "stacked" ? (
   <CaseStacked project={project} />
   ) : (

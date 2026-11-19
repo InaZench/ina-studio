@@ -15,4 +15,7 @@ objective: |-
 heroNote: AI-generated teaser film — concept, generation and editing by INA
 heroVideo: /videos/projects/0706.mp4
 coverImage: /images/projects/cendreline-cover.jpg
+heroAspect: 4/3
+pageLayout: stacked
+nextProject: morning-to-night
 ---

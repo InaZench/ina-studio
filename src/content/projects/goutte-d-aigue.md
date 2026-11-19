@@ -15,6 +15,10 @@ objective: |-
 heroNote: AI-generated teaser film — concept, generation and editing by INA
 heroVideo: /videos/projects/Goutte_dAigue.mp4
 verticalVideo: /videos/projects/Goutte_dAigue_9x16.mp4
-verticalCaption: Vertical film — 9:16
 coverImage: /images/projects/goutte-dAigue-cover.png
+heroAspect: 16/9
+heroLabel: Horizontal version
+verticalEyebrow: Vertical version
+pageLayout: stacked
+nextProject: cendreline
 ---
