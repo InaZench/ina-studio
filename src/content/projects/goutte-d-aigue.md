@@ -16,6 +16,7 @@ heroNote: AI-generated teaser film — concept, generation and editing by INA
 heroVideo: /videos/projects/Goutte_dAigue.mp4
 verticalVideo: /videos/projects/Goutte_dAigue_9x16.mp4
 coverImage: /images/projects/goutte-dAigue-cover.png
+previewVideo: /videos/previews/goutte-d-aigue.mp4
 heroAspect: 16/9
 heroLabel: Horizontal version
 verticalEyebrow: Vertical version

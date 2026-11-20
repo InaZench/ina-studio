@@ -16,6 +16,7 @@ verticalVideo: /videos/projects/Morning_to_Night_9x16.mp4
 verticalEyebrow: Vertical version
 verticalPoster: /images/projects/morning-to-night-poster-9x16.jpg
 coverImage: /images/projects/morning-to-night-cover.jpg
+previewVideo: /videos/previews/morning-to-night.mp4
 pageLayout: stacked
 nextProject: cendreline
 ---

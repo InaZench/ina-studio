@@ -175,7 +175,22 @@ const notes = rest.join("\n\n");
       </p>
     </div>
     {next.data.coverImage && (
-      <div class="hidden md:block md:-ml-[160px] w-[220px] shrink-0 bg-[#1A1A1A] transition-opacity duration-700 group-hover:opacity-90" style={`aspect-ratio: 16/10; background-image: url('${next.data.coverImage}'); background-size: cover; background-position: center;`}></div>
+      <!-- обложка; при наведении поверх неё плавно проявляется живое превью (петля без звука, play/pause — в Layout.astro) -->
+      <div class="hidden md:block relative overflow-hidden md:-ml-[160px] w-[220px] shrink-0 bg-[#1A1A1A]" style={`aspect-ratio: 16/10; background-image: url('${next.data.coverImage}'); background-size: cover; background-position: center;`}>
+        {next.data.previewVideo && (
+          <video
+            data-preview
+            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:opacity-100 group-focus-visible:opacity-100"
+            src={next.data.previewVideo}
+            muted
+            loop
+            playsinline
+            preload="auto"
+            aria-hidden="true"
+            tabindex="-1"
+          />
+        )}
+      </div>
     )}
   </a>
 </section>

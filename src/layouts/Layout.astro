@@ -96,6 +96,19 @@ const { title = "INA — Visual stories for brands", description = "Cinematic vi
         });
         video.addEventListener("play", () => { video.controls = true; film.classList.add("is-playing"); });
       });
+
+      // Живое превью в Next project: при наведении петля проявляется и играет, после ухода курсора — пауза
+      document.querySelectorAll<HTMLVideoElement>("video[data-preview]").forEach((v) => {
+        const link = v.closest("a");
+        if (!link || !matchMedia("(hover: hover)").matches) return;
+        let t: number | undefined;
+        const on = () => { clearTimeout(t); v.play().catch(() => {}); };
+        const off = () => { t = window.setTimeout(() => v.pause(), 700); };
+        link.addEventListener("mouseenter", on);
+        link.addEventListener("focus", on);
+        link.addEventListener("mouseleave", off);
+        link.addEventListener("blur", off);
+      });
     </script>
   </body>
 </html>

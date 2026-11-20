@@ -25,6 +25,7 @@ const projects = defineCollection({
     verticalTitle: z.string().optional(),
     verticalCaption: z.string().optional(),
     coverImage: z.string().optional(),
+    previewVideo: z.string().optional(), // короткая беззвучная петля 16:10 для живого превью в Next project
     pageLayout: z.enum(['classic', 'stacked']).optional(),
   }),
 });
