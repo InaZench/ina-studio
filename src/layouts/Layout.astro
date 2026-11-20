@@ -1,5 +1,9 @@
 ---
 import "../styles/global.css";
+// ссылки на файлы шрифтов для preload — грузятся сразу вместе со страницей
+import corm300 from "@fontsource/cormorant-garamond/files/cormorant-garamond-latin-300-normal.woff2?url";
+import corm300i from "@fontsource/cormorant-garamond/files/cormorant-garamond-latin-300-italic.woff2?url";
+import inter300 from "@fontsource/inter/files/inter-latin-300-normal.woff2?url";
 
 const { title = "INA — Visual stories for brands", description = "Cinematic visual content crafted with AI for brands." } = Astro.props;
 
@@ -13,12 +17,11 @@ const { title = "INA — Visual stories for brands", description = "Cinematic vi
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href={corm300} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={corm300i} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={inter300} as="font" type="font/woff2" crossorigin />
+    <!-- класс js: текст с data-reveal прячется до проявления только при работающем JS -->
+    <script is:inline>document.documentElement.classList.add("js");</script>
 
     <title>{title}</title>
   </head>
@@ -31,7 +34,7 @@ const { title = "INA — Visual stories for brands", description = "Cinematic vi
       <!-- слева: почта (ссылка mailto); на телефоне в две строки -->
       <a
         href="mailto:ina.studio.creative@gmail.com"
-        class="text-[8px] md:text-[11px] leading-[1.6] font-light tracking-[0.18em] md:tracking-[0.3em] text-[#8B6F47] uppercase hover:text-[#6E5636] transition-colors duration-700"
+        class="text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.16em] md:tracking-[0.3em] text-[#8B6F47] uppercase hover:text-[#6E5636] transition-colors duration-700"
       >
         ina.studio.creative<br class="md:hidden" />@gmail.com
       </a>
@@ -45,8 +48,9 @@ const { title = "INA — Visual stories for brands", description = "Cinematic vi
       </a>
 
       <!-- справа: приглашение; на телефоне в три строки -->
-      <span class="text-right text-[8px] md:text-[11px] leading-[1.6] font-light tracking-[0.18em] md:tracking-[0.3em] text-[#8B6F47] uppercase">
-        Let's create<br class="md:hidden" /> something<br class="md:hidden" /> together
+      <!-- -mr = хвостовая разрядка последней буквы: правый край текста ровно по полю, как почта слева -->
+      <span class="text-right text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.16em] md:tracking-[0.3em] -mr-[0.16em] md:-mr-[0.3em] text-[#8B6F47] uppercase">
+        Let’s create<br class="md:hidden" /> something<br class="md:hidden" /> together
       </span>
     </nav>
 
@@ -60,11 +64,38 @@ const { title = "INA — Visual stories for brands", description = "Cinematic vi
       class="bg-[#F8F5EF] border-t border-black/[0.08] px-6 md:px-10 py-8 md:py-9"
     >
       <div class="flex justify-end text-right">
-        <span class="text-[11px] font-light tracking-[0.15em] text-[#8C8579]">
+        <span class="text-[11px] font-light tracking-[0.15em] -mr-[0.15em] text-[#6B6458]">
           © 2026 INA STUDIO. ALL RIGHTS RESERVED.
         </span>
       </div>
     </footer>
 
+    <script>
+      // Проявление текста: элементы с data-reveal плавно поднимаются, когда попадают в кадр.
+      // Ждём загрузки шрифтов (не дольше 1.2 с), чтобы заголовок появлялся уже нужным шрифтом.
+      const els = document.querySelectorAll("[data-reveal]");
+      const show = (el: Element) => el.classList.add("is-in");
+      const start = () => {
+        if (!("IntersectionObserver" in window)) { els.forEach(show); return; }
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+        }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+        // всё, что уже на первом экране, проявляется сразу (по задержкам --d), остальное — при прокрутке
+        els.forEach((el) => (el.getBoundingClientRect().top < innerHeight ? show(el) : io.observe(el)));
+      };
+      Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1200))]).then(() => requestAnimationFrame(start));
+
+      // Ролики: чистая заставка и своя кнопка Play; кнопки браузера — после запуска
+      document.querySelectorAll<HTMLElement>("[data-film]").forEach((film) => {
+        const video = film.querySelector("video")!;
+        const btn = film.querySelector("button")!;
+        btn.addEventListener("click", () => {
+          video.controls = true;
+          film.classList.add("is-playing");
+          video.play();
+        });
+        video.addEventListener("play", () => { video.controls = true; film.classList.add("is-playing"); });
+      });
+    </script>
   </body>
 </html>

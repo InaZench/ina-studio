@@ -1,5 +1,5 @@
 ---
-title: Goutte d'Aigue
+title: Goutte d’Aigue
 client: Concept Project
 year: '2026'
 eyebrow: FRAGRANCE CAMPAIGN

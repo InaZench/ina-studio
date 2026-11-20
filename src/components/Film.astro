@@ -1,0 +1,29 @@
+---
+// Ролик с чистой заставкой и своей тонкой кнопкой Play.
+// Кнопки браузера (controls) убираются сразу при разборе страницы и возвращаются после запуска;
+// без JS ролик остаётся со стандартными кнопками. Логика клика — в Layout.astro ([data-film]).
+const { src, poster, aspect = "16/9", label = "Play film" } = Astro.props;
+---
+<div class="film relative" data-film>
+  <video
+    class="block w-full"
+    style={`aspect-ratio: ${aspect}; object-fit: contain; background: #0A0A0A;`}
+    src={src}
+    poster={poster}
+    controls
+    playsinline
+    preload="metadata"
+  />
+  <script is:inline>document.currentScript.previousElementSibling.removeAttribute("controls");</script>
+  <button
+    type="button"
+    aria-label={label}
+    class="film-play group absolute inset-0 flex items-center justify-center cursor-pointer"
+  >
+    <span class="flex items-center justify-center w-[60px] h-[60px] md:w-[76px] md:h-[76px] rounded-full border border-white/70 bg-black/10 backdrop-blur-[2px] transition-[background-color,border-color,scale] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:bg-white/10 group-hover:border-white group-hover:scale-[1.04]">
+      <svg class="w-[14px] h-[16px] md:w-[17px] md:h-[20px] ml-[3px]" viewBox="0 0 17 20" fill="none" aria-hidden="true">
+        <path d="M1 1.2 16 10 1 18.8Z" stroke="#fff" stroke-width="1" stroke-linejoin="round" />
+      </svg>
+    </span>
+  </button>
+</div>

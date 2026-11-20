@@ -7,6 +7,7 @@
 // На телефоне: ролик → вертикальный ролик → текст. Фон #EFEAE0, почта — #E9E3D7; шапка и подвал светлее.
 // Ролики показываются целиком (object-fit: contain); во весь экран — на чёрном (правило в global.css).
 import { getCollection } from "astro:content";
+import Film from "./Film.astro";
 const { project } = Astro.props;
 // следующий проект — по полю nextProject (id файла проекта); название и обложка берутся из его карточки
 const next = project.nextProject ? (await getCollection("projects")).find((e) => e.id === project.nextProject) : null;
@@ -24,17 +25,9 @@ const notes = rest.join("\n\n");
   <div class="max-w-[1140px] mx-auto">
     {project.heroVideo && (
       <div class="mx-auto" style={`max-width: min(100%, calc((100vh - 240px) * ${aw} / ${ah}));`}>
-        <video
-          class="block w-full"
-          style={`aspect-ratio: ${aw}/${ah}; object-fit: contain; background: #0A0A0A;`}
-          src={project.heroVideo}
-          poster={project.heroPoster}
-          controls
-          playsinline
-          preload="metadata"
-        />
+        <Film src={project.heroVideo} poster={project.heroPoster} aspect={`${aw}/${ah}`} />
         {project.heroLabel && (
-          <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#8C8579] uppercase text-center mt-6">{project.heroLabel}</p>
+          <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#6B6458] uppercase text-center mt-6">{project.heroLabel}</p>
         )}
       </div>
     )}
@@ -42,79 +35,71 @@ const notes = rest.join("\n\n");
       <div class="grid grid-cols-1 md:grid-cols-[7fr_5fr] gap-y-14 md:gap-y-0 md:gap-x-40 mt-14 md:mt-32">
         <div class="flex flex-col md:justify-between md:col-start-1 md:row-start-1">
           <div class="hidden md:block pt-[12%]">
-            <p class="hidden md:block max-w-[540px] mx-auto text-center font-serif font-light text-[30px] leading-[1.55] text-[#8B6F47] whitespace-pre-line" style="text-wrap: balance;">{project.objective}</p>
+            <p data-reveal class="hidden md:block max-w-[540px] mx-auto text-center font-serif font-light text-[30px] leading-[1.55] text-[#8B6F47] whitespace-pre-line" style="text-wrap: balance;">{project.objective}</p>
           </div>
           <div class="flex flex-col md:block mt-2 md:mt-24">
       {project.heroNote && (
-        <p class="text-[length:min(9px,calc((100vw-32px)/39.5))] leading-[1.9] font-light tracking-[0.06em] -mx-2 md:mx-0 whitespace-nowrap text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#8C8579] uppercase order-2 mb-8 md:mb-[56px]">{project.heroNote}</p>
+        <p data-reveal class="text-[length:min(9px,calc((100vw-48px)/39.6))] leading-[1.9] font-light tracking-[0.03em] whitespace-nowrap text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px]">{project.heroNote}</p>
       )}
       <div class="md:hidden order-1 text-center font-serif font-light text-[#8B6F47] mb-20">
-        <p class="text-[24px] leading-[1.45] whitespace-pre-line" style="text-wrap: balance;">{phrase}</p>
-        {notes && (<p class="mt-6 text-[length:min(19px,calc((100vw-48px)/18))] leading-[1.6] whitespace-pre">{notes}</p>)}
+        <p data-reveal class="text-[24px] leading-[1.45] whitespace-pre-line" style="text-wrap: balance;">{phrase}</p>
+        {notes && (<p data-reveal style="--d: 150ms" class="mt-6 text-[length:min(19px,calc((100vw-48px)/18))] leading-[1.6] whitespace-pre">{notes}</p>)}
       </div>
-      <div class="order-3 border-t border-black/[0.08] md:max-w-[520px] md:mb-[39px]">
-          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
-            <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Client</span>
+      <div data-reveal style="--d: 120ms" class="order-3 border-t border-black/[0.08] md:w-full md:max-w-[520px] md:mx-auto md:mb-[39px]">
+          <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#6B6458] uppercase">Client</span>
             <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.client}</span>
           </div>
-          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
-            <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Format</span>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#6B6458] uppercase">Format</span>
             <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.format}</span>
           </div>
           {project.tools && (
-          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
-            <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Tools</span>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#6B6458] uppercase">Tools</span>
             <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.tools}</span>
           </div>
           )}
-          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
-            <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Delivery</span>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#6B6458] uppercase">Delivery</span>
             <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.delivery}</span>
           </div>
       </div>
           </div>
         </div>
         <div class="order-first md:order-none md:col-start-2 md:row-start-1">
-          <video
-            class="block w-full"
-            style="aspect-ratio: 9/16; object-fit: contain; background: #0A0A0A;"
-            src={project.verticalVideo}
-            poster={project.verticalPoster}
-            controls
-            playsinline
-            preload="metadata"
-          />
-          <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#8C8579] uppercase text-center mt-6">{project.verticalEyebrow || "Vertical version"}</p>
+          <Film src={project.verticalVideo} poster={project.verticalPoster} aspect="9/16" />
+          <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#6B6458] uppercase text-center mt-6">{project.verticalEyebrow || "Vertical version"}</p>
         </div>
       </div>
     ) : (
       <div class="flex flex-col items-center mt-14 md:mt-28">
-        <div class="hidden md:block mb-24"><p class="hidden md:block max-w-[540px] mx-auto text-center font-serif font-light text-[30px] leading-[1.55] text-[#8B6F47] whitespace-pre-line" style="text-wrap: balance;">{project.objective}</p></div>
+        <div class="hidden md:block mb-24"><p data-reveal class="hidden md:block max-w-[540px] mx-auto text-center font-serif font-light text-[30px] leading-[1.55] text-[#8B6F47] whitespace-pre-line" style="text-wrap: balance;">{project.objective}</p></div>
         <div class="flex flex-col w-full md:max-w-[520px]">
       {project.heroNote && (
-        <p class="text-[length:min(9px,calc((100vw-32px)/39.5))] leading-[1.9] font-light tracking-[0.06em] -mx-2 md:mx-0 whitespace-nowrap text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#8C8579] uppercase order-2 mb-8 md:mb-[56px] md:text-center">{project.heroNote}</p>
+        <p data-reveal class="text-[length:min(9px,calc((100vw-48px)/39.6))] leading-[1.9] font-light tracking-[0.03em] whitespace-nowrap text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:text-center">{project.heroNote}</p>
       )}
       <div class="md:hidden order-1 text-center font-serif font-light text-[#8B6F47] mb-20">
-        <p class="text-[24px] leading-[1.45] whitespace-pre-line" style="text-wrap: balance;">{phrase}</p>
-        {notes && (<p class="mt-6 text-[length:min(19px,calc((100vw-48px)/18))] leading-[1.6] whitespace-pre">{notes}</p>)}
+        <p data-reveal class="text-[24px] leading-[1.45] whitespace-pre-line" style="text-wrap: balance;">{phrase}</p>
+        {notes && (<p data-reveal style="--d: 150ms" class="mt-6 text-[length:min(19px,calc((100vw-48px)/18))] leading-[1.6] whitespace-pre">{notes}</p>)}
       </div>
-      <div class="order-3 border-t border-black/[0.08] md:max-w-[520px]">
-          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
-            <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Client</span>
+      <div data-reveal style="--d: 120ms" class="order-3 border-t border-black/[0.08] md:max-w-[520px]">
+          <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#6B6458] uppercase">Client</span>
             <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.client}</span>
           </div>
-          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
-            <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Format</span>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#6B6458] uppercase">Format</span>
             <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.format}</span>
           </div>
           {project.tools && (
-          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
-            <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Tools</span>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#6B6458] uppercase">Tools</span>
             <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.tools}</span>
           </div>
           )}
-          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
-            <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Delivery</span>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#6B6458] uppercase">Delivery</span>
             <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.delivery}</span>
           </div>
       </div>
@@ -128,17 +113,9 @@ const notes = rest.join("\n\n");
   <div class="max-w-[1140px] mx-auto grid grid-cols-1 md:grid-cols-[7fr_5fr] gap-y-14 md:gap-y-0 md:gap-x-40">
     {project.heroVideo && (
       <div class="md:col-start-1 md:row-start-1">
-        <video
-          class="block w-full"
-          style="aspect-ratio: 4/5; object-fit: contain; background: #0A0A0A;"
-          src={project.heroVideo}
-          poster={project.heroPoster}
-          controls
-          playsinline
-          preload="metadata"
-        />
+        <Film src={project.heroVideo} poster={project.heroPoster} aspect="4/5" />
         {project.heroLabel && (
-          <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#8C8579] uppercase text-center mt-6">{project.heroLabel}</p>
+          <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#6B6458] uppercase text-center mt-6">{project.heroLabel}</p>
         )}
       </div>
     )}
@@ -146,48 +123,40 @@ const notes = rest.join("\n\n");
       <div class="relative md:col-start-2 md:row-start-1 md:row-span-2 md:pt-[105%]">
         <!-- окно над вертикальным роликом (высота = 105% ширины колонки); фраза по центру окна по горизонтали, в оптическом центре по вертикали -->
         <div class="hidden md:flex absolute top-0 left-0 right-0 items-center justify-center pb-[24%]" style="aspect-ratio: 1 / 1.05;">
-          <p class="max-w-[400px] text-center font-serif font-light text-[30px] leading-[1.55] text-[#8B6F47] whitespace-pre-line" style="text-wrap: balance;">{project.objective}</p>
+          <p data-reveal class="max-w-[400px] text-center font-serif font-light text-[30px] leading-[1.55] text-[#8B6F47] whitespace-pre-line" style="text-wrap: balance;">{project.objective}</p>
         </div>
-        <video
-          class="block w-full"
-          style="aspect-ratio: 9/16; object-fit: contain; background: #0A0A0A;"
-          src={project.verticalVideo}
-          poster={project.verticalPoster}
-          controls
-          playsinline
-          preload="metadata"
-        />
-        <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#8C8579] uppercase text-center mt-6">{project.verticalEyebrow || "Also in this campaign"}</p>
+        <Film src={project.verticalVideo} poster={project.verticalPoster} aspect="9/16" />
+        <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#6B6458] uppercase text-center mt-6">{project.verticalEyebrow || "Also in this campaign"}</p>
         {project.verticalCaption && (
-          <p class="text-[10px] font-light tracking-[0.25em] text-[#8C8579] uppercase text-center mt-3">{project.verticalCaption}</p>
+          <p class="text-[10px] font-light tracking-[0.25em] text-[#6B6458] uppercase text-center mt-3">{project.verticalCaption}</p>
         )}
       </div>
     )}
     <div class="flex flex-col md:block md:col-start-1 md:row-start-2 mt-2 md:mt-24 md:self-end md:translate-y-[44px] md:-translate-x-[min(52px,max(12px,calc((100vw-1140px)/2-28px)))]">
       {project.heroNote && (
-        <p class="text-[length:min(9px,calc((100vw-32px)/39.5))] leading-[1.9] font-light tracking-[0.06em] -mx-2 md:mx-0 whitespace-nowrap text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#8C8579] uppercase order-2 mb-8 md:mb-[56px] md:max-w-[520px]">{project.heroNote}</p>
+        <p data-reveal class="text-[length:min(9px,calc((100vw-48px)/39.6))] leading-[1.9] font-light tracking-[0.03em] whitespace-nowrap text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:max-w-[520px]">{project.heroNote}</p>
       )}
       <div class="md:hidden order-1 text-center font-serif font-light text-[#8B6F47] mb-20">
-        <p class="text-[24px] leading-[1.45] whitespace-pre-line" style="text-wrap: balance;">{phrase}</p>
-        {notes && (<p class="mt-6 text-[length:min(19px,calc((100vw-48px)/18))] leading-[1.6] whitespace-pre">{notes}</p>)}
+        <p data-reveal class="text-[24px] leading-[1.45] whitespace-pre-line" style="text-wrap: balance;">{phrase}</p>
+        {notes && (<p data-reveal style="--d: 150ms" class="mt-6 text-[length:min(19px,calc((100vw-48px)/18))] leading-[1.6] whitespace-pre">{notes}</p>)}
       </div>
-      <div class="order-3 border-t border-black/[0.08] md:max-w-[520px]">
-          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
-            <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Client</span>
+      <div data-reveal style="--d: 120ms" class="order-3 border-t border-black/[0.08] md:max-w-[520px]">
+          <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#6B6458] uppercase">Client</span>
             <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.client}</span>
           </div>
-          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
-            <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Format</span>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#6B6458] uppercase">Format</span>
             <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.format}</span>
           </div>
           {project.tools && (
-          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
-            <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Tools</span>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#6B6458] uppercase">Tools</span>
             <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.tools}</span>
           </div>
           )}
-          <div class="border-b border-black/[0.08] py-4 flex justify-between gap-4">
-            <span class="text-[10px] font-light tracking-[0.2em] text-[#8C8579] uppercase">Delivery</span>
+          <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
+            <span class="text-[10px] font-light tracking-[0.2em] text-[#6B6458] uppercase">Delivery</span>
             <span class="font-serif text-[15px] md:text-[16px] text-[#0A0A0A] text-right">{project.delivery}</span>
           </div>
       </div>
@@ -200,7 +169,7 @@ const notes = rest.join("\n\n");
 <section class="bg-[#EFEAE0] px-6 md:px-10 pb-16 md:pb-20">
   <a href={`/work/${next.id}`} class="group max-w-[1140px] mx-auto border-t border-black/[0.08] pt-12 md:pt-16 flex items-center gap-10 md:grid md:grid-cols-[7fr_5fr] md:gap-x-40">
     <div>
-      <p class="flex items-center gap-4 md:gap-5 font-serif font-light text-[30px] md:text-[44px] leading-[1.2] text-[#8B6F47] group-hover:text-[#6E5636] transition-colors duration-700">
+      <p data-reveal class="flex items-center gap-4 md:gap-5 font-serif font-light text-[30px] md:text-[44px] leading-[1.2] text-[#8B6F47] group-hover:text-[#6E5636] transition-colors duration-700">
         <span>{next.data.title}</span>
         <svg class="w-[0.85em] h-[0.5em] translate-y-[0.06em] shrink-0" viewBox="0 0 34 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0 10h32M24 2l8 8-8 8"/></svg>
       </p>
@@ -214,12 +183,13 @@ const notes = rest.join("\n\n");
 
 <section class="bg-[#E9E3D7] px-6 md:px-10 py-28 md:py-32 min-h-[480px] flex flex-col items-center justify-center">
   <a
+    data-reveal
     href="mailto:ina.studio.creative@gmail.com"
     class="font-serif font-light text-[26px] md:text-[46px] text-[#8B6F47] underline underline-offset-[10px] md:underline-offset-[11px] decoration-[0.5px] -mt-4 md:mt-2 mb-7 md:mb-8 hover:text-[#6E5636] transition-colors duration-700"
   >
     ina.studio.creative@gmail.com
   </a>
-  <p class="text-[11px] font-light tracking-[0.2em] pl-[0.2em] text-[#8C8579] uppercase">
+  <p data-reveal style="--d: 150ms" class="text-[11px] font-light tracking-[0.2em] pl-[0.2em] text-[#6B6458] uppercase">
     Click to write
   </p>
 </section>
