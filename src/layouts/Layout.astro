@@ -5,7 +5,14 @@ import corm300 from "@fontsource/cormorant-garamond/files/cormorant-garamond-lat
 import corm300i from "@fontsource/cormorant-garamond/files/cormorant-garamond-latin-300-italic.woff2?url";
 import inter300 from "@fontsource/inter/files/inter-latin-300-normal.woff2?url";
 
-const { title = "INA — Visual stories for brands", description = "Cinematic visual content crafted with AI for brands." } = Astro.props;
+const {
+  title = "INA — Visual stories for brands",
+  description = "INA Studio — cinematic AI advertising films for fragrance and technology brands: concept, generation, editing, colour and sound.",
+  ogImage = "/og/home.jpg",
+} = Astro.props;
+// адрес страницы и картинки — полными ссылками (нужно мессенджерам и соцсетям для карточки ссылки)
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImageUrl = new URL(ogImage, Astro.site).href;
 
 ---
 
@@ -16,6 +23,22 @@ const { title = "INA — Visual stories for brands", description = "Cinematic vi
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#F8F5EF" />
+
+    <!-- карточка ссылки в мессенджерах и соцсетях (WhatsApp, Telegram, LinkedIn, Facebook, X) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="INA Studio" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="preload" href={corm300} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={corm300i} as="font" type="font/woff2" crossorigin />

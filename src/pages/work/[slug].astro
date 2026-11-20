@@ -54,14 +54,18 @@ const fallbackData = {
 const project = cmsData
   ? { ...cmsData, stack: [], process: [], related: [] }
   : (fallbackData[slug] || fallbackData["lempreinte"]);
+// описание для поиска и карточки ссылки: «Cendreline — fragrance campaign by INA Studio. AI-generated teaser film: concept, generation and editing.»
+const kind = (project.eyebrow || "").toLowerCase();
+const note = (project.heroNote || "").replace(/ — /, ": ").replace(/ by INA$/, "");
+const description = `${project.title} — ${kind} by INA Studio. ${note}.`;
 ---
 
-<Layout title={`${project.title} — INA`}>
+<Layout title={`${project.title} — INA`} description={description} ogImage={`/og/${slug}.jpg`}>
   {project.pageLayout === "stacked" ? (
   <CaseStacked project={project} />
   ) : (
   <Fragment>
-  <section class="relative w-screen h-screen bg-[#0E0E0E] overflow-hidden">
+  <section class="relative w-full h-screen bg-[#0E0E0E] overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] via-[#0E0E0E] to-[#000000]"></div>
     <div class="absolute top-7 right-10 text-[9px] font-light tracking-[0.3em] text-white/45">
       CASE / {project.caseNumber}

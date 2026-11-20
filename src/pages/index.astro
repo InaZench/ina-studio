@@ -15,7 +15,7 @@ const selectedWork = cmsWork.slice(0, 4);
 ---
 
 <Layout title="INA — Visual stories for brands">
-<section class="relative w-screen h-screen overflow-hidden bg-[#0E0E0E]">
+<section class="relative w-full h-screen overflow-hidden bg-[#0E0E0E]">
   <video
     autoplay
     muted
@@ -37,7 +37,7 @@ const selectedWork = cmsWork.slice(0, 4);
         <span data-reveal class="block" style="--d: 450ms">for brands.</span>
       </h1>
       <p data-reveal style="--d: 700ms" class="font-serif text-[18px] md:text-[24px] font-light text-white/70 mt-6 max-w-xl">
-        Fragrance · Fashion · Technology
+        Fragrance · Technology
       </p>
     </div>
 
@@ -63,12 +63,17 @@ const selectedWork = cmsWork.slice(0, 4);
             href={`/work/${project.slug}`}
             class={`group block ${i % 2 === 1 ? "md:mt-32" : ""}`}
           >
+            <!-- рамка неподвижна, при наведении картинка медленно приближается внутри неё -->
             <div
-              class={`bg-[#1A1A1A] overflow-hidden mb-6 transition-transform duration-700 group-hover:scale-[1.02] ${
+              class={`relative bg-[#1A1A1A] overflow-hidden mb-6 ${
                 i % 2 === 0 ? "aspect-[16/10]" : "aspect-[3/4]"
               }`}
-              style={project.coverImage ? `background-image: url('${project.coverImage}'); background-size: cover; background-position: center;` : ""}
-            ></div>
+            >
+              <div
+                class="absolute inset-0 transition-transform duration-[1600ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.045]"
+                style={project.coverImage ? `background-image: url('${project.coverImage}'); background-size: cover; background-position: center;` : ""}
+              ></div>
+            </div>
             <h3 class="font-serif text-[24px] md:text-[26px] font-normal text-[#8B6F47] leading-tight group-hover:text-[#6E5636] transition-colors duration-700">
               {project.title}
             </h3>

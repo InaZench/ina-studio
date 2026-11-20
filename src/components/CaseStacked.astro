@@ -171,7 +171,7 @@ const notes = rest.join("\n\n");
     <div>
       <p data-reveal class="flex items-center gap-4 md:gap-5 font-serif font-light text-[30px] md:text-[44px] leading-[1.2] text-[#8B6F47] group-hover:text-[#6E5636] transition-colors duration-700">
         <span>{next.data.title}</span>
-        <svg class="w-[0.85em] h-[0.5em] translate-y-[0.06em] shrink-0" viewBox="0 0 34 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0 10h32M24 2l8 8-8 8"/></svg>
+        <svg class="w-[0.85em] h-[0.5em] translate-y-[0.06em] shrink-0 transition-[translate] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:translate-x-[6px]" viewBox="0 0 34 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0 10h32M24 2l8 8-8 8"/></svg>
       </p>
     </div>
     {next.data.coverImage && (
