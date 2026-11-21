@@ -106,7 +106,10 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
         // всё, что уже на первом экране, проявляется сразу (по задержкам --d), остальное — при прокрутке
         els.forEach((el) => (el.getBoundingClientRect().top < innerHeight ? show(el) : io.observe(el)));
       };
-      Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1200))]).then(() => requestAnimationFrame(start));
+      // запуск без requestAnimationFrame: он «спит» в фоновой вкладке и у сервисов снимков страниц
+      Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1200))]).then(start);
+      // страховка: при печати и сохранении в PDF весь текст виден сразу
+      addEventListener("beforeprint", () => els.forEach(show));
 
       // Ролики: чистая заставка и своя кнопка Play; кнопки браузера — после запуска
       document.querySelectorAll<HTMLElement>("[data-film]").forEach((film) => {
