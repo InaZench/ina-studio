@@ -25,7 +25,7 @@ const notes = rest.join("\n\n");
   <div class="max-w-[1140px] mx-auto">
     {project.heroVideo && (
       <div class="mx-auto" style={`max-width: min(100%, calc((100vh - 240px) * ${aw} / ${ah}));`}>
-        <Film src={project.heroVideo} poster={project.heroPoster} aspect={`${aw}/${ah}`} />
+        <Film src={project.heroVideo} poster={project.heroPoster} aspect={`${aw}/${ah}`} playY={project.heroPlayY} />
         {project.heroLabel && (
           <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#6B6458] uppercase text-center mt-6">{project.heroLabel}</p>
         )}

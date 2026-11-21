@@ -19,6 +19,7 @@ const projects = defineCollection({
     tools: z.string().optional(),
     nextProject: z.string().optional(),
     heroPoster: z.string().optional(),
+    heroPlayY: z.string().optional(), // высота кнопки Play на заставке (напр. '90%'), если по центру она закрывает продукт
     verticalPoster: z.string().optional(),
     verticalVideo: z.string().optional(),
     verticalEyebrow: z.string().optional(),
