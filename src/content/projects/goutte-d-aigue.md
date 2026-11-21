@@ -22,6 +22,6 @@ heroLabel: Horizontal version
 verticalEyebrow: Vertical version
 pageLayout: stacked
 nextProject: morning-to-night
-heroPoster: /images/projects/goutte-d-aigue-poster-16x9.jpg
+heroPoster: /images/projects/goutte-d-aigue-poster-16x9-packshot.jpg
 verticalPoster: /images/projects/goutte-d-aigue-poster-9x16.jpg
 ---
