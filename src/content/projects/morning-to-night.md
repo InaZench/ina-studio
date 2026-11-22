@@ -7,7 +7,10 @@ caseNumber: '04'
 format: AI-generated social ad
 tools: Higgsfield, custom compositing
 delivery: Autumn 2026
-objective: The whole city, from first light to last, in the palm of your hand.
+objective: |-
+  The whole city,
+  from first light to last,
+  in the palm of your hand.
 heroNote: AI-generated ad films — concept, generation and editing by INA
 heroVideo: /videos/projects/Morning_to_Night_4x5.mp4
 heroLabel: Feed version
