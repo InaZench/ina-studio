@@ -5,6 +5,7 @@ year: '2026'
 eyebrow: FRAGRANCE CAMPAIGN
 caseNumber: '02'
 format: AI-generated cinematic teaser
+tools: Higgsfield, custom compositing
 delivery: Summer 2026
 objective: |-
   The first light of the mountains, in a single drop.
