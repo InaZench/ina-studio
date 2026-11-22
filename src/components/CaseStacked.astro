@@ -33,15 +33,12 @@ const notes = rest.join("\n\n");
     )}
     {project.verticalVideo ? (
       <div class="grid grid-cols-1 md:grid-cols-[7fr_5fr] gap-y-14 md:gap-y-0 md:gap-x-40 mt-14 md:mt-32">
-        <!-- как на странице телефона: левый блок сдвинут на 52 px к краю, низ Brief — на 58 px ниже подписи вертикального ролика -->
-        <div class="flex flex-col md:justify-between md:col-start-1 md:row-start-1 md:-translate-x-[min(52px,max(12px,calc((100vw-1140px)/2-28px)))]">
+        <!-- как на странице телефона: строка про ИИ и Brief сдвинуты на 52 px к краю (фраза — на прежнем месте), низ Brief — на 58 px ниже подписи вертикального ролика -->
+        <div class="flex flex-col md:justify-between md:col-start-1 md:row-start-1">
           <div class="hidden md:block pt-[12%]">
-            <div class="hidden md:block md:max-w-[520px] text-center font-serif font-light text-[#8B6F47]">
-              <p data-reveal class="max-w-[400px] mx-auto text-[30px] leading-[1.55] whitespace-pre-line" style="text-wrap: balance;">{phrase}</p>
-              {notes && (<p data-reveal style="--d: 150ms" class="mt-8 text-[19px] leading-[1.7] whitespace-pre">{notes}</p>)}
-            </div>
+            <p data-reveal class="hidden md:block max-w-[540px] mx-auto text-center font-serif font-light text-[30px] leading-[1.55] text-[#8B6F47] whitespace-pre-line" style="text-wrap: balance;">{project.objective}</p>
           </div>
-          <div class="flex flex-col md:block mt-2 md:mt-24 md:translate-y-[44px]">
+          <div class="flex flex-col md:block mt-2 md:mt-24 md:translate-y-[44px] md:-translate-x-[min(52px,max(12px,calc((100vw-1140px)/2-28px)))]">
       {project.heroNote && (
         <p data-reveal class="text-[length:min(9px,calc((100vw-48px)/39.6))] leading-[1.9] font-light tracking-[0.03em] whitespace-nowrap text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:w-full md:max-w-[520px]">{project.heroNote}</p>
       )}
