@@ -12,6 +12,8 @@ heroNote: AI-generated ad films — concept, generation and editing by INA
 heroVideo: /videos/projects/Morning_to_Night_4x5.mp4
 heroLabel: Feed version
 heroPoster: /images/projects/morning-to-night-poster-4x5.jpg
+heroLoop: /videos/loops/morning-to-night-4x5.mp4
+verticalLoop: /videos/loops/morning-to-night-9x16.mp4
 verticalVideo: /videos/projects/Morning_to_Night_9x16.mp4
 verticalEyebrow: Vertical version
 verticalPoster: /images/projects/morning-to-night-poster-9x16.jpg

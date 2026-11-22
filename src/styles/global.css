@@ -85,6 +85,12 @@ html.js [data-reveal].is-in {
 /* Своя кнопка Play поверх заставки; стандартные кнопки браузера появляются после запуска */
 .film-play { transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1); }
 .film.is-playing .film-play { opacity: 0; pointer-events: none; }
+/* живая заставка: петля поверх постера, плавно проявляется; после запуска фильма скрыта */
+.film-loop { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none;
+  transition: opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.film.is-live .film-loop { opacity: 1; }
+.film.is-playing .film-loop { opacity: 0; transition-duration: 0.3s; }
+@media print { .film-loop { display: none !important; } }
 
 /* Выделение текста — в тон сайта (бронза), а не стандартное синее */
 ::selection { background-color: rgba(139, 111, 71, 0.24); color: inherit; }

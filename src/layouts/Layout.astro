@@ -123,6 +123,32 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
         video.addEventListener("play", () => { video.controls = true; film.classList.add("is-playing"); });
       });
 
+      // Живые заставки роликов на страницах проектов: компьютер — при наведении, телефон — когда ролик на экране.
+      // Петля проявляется, только когда реально пошла (событие playing), уходит плавно; после запуска фильма — стоп.
+      const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      document.querySelectorAll<HTMLElement>("[data-film]").forEach((film) => {
+        const lv = film.querySelector<HTMLVideoElement>("video[data-film-loop]");
+        if (!lv || still) return;
+        let t: number | undefined;
+        const on = () => {
+          if (film.classList.contains("is-playing")) return;
+          clearTimeout(t);
+          lv.play().then(() => film.classList.add("is-live")).catch(() => {});
+        };
+        const off = () => {
+          film.classList.remove("is-live");
+          clearTimeout(t); t = window.setTimeout(() => lv.pause(), 900);
+        };
+        film.querySelector("video:not([data-film-loop])")!.addEventListener("play", () => { off(); });
+        if (matchMedia("(hover: hover)").matches) {
+          film.addEventListener("mouseenter", on);
+          film.addEventListener("mouseleave", off);
+        } else if ("IntersectionObserver" in window) {
+          new IntersectionObserver((es) => es.forEach((e) => (e.intersectionRatio >= 0.6 ? on() : off())),
+            { threshold: [0, 0.6] }).observe(film);
+        }
+      });
+
       // Живое превью в Next project: при наведении петля проявляется и играет, после ухода курсора — пауза
       document.querySelectorAll<HTMLVideoElement>("video[data-preview]").forEach((v) => {
         const link = v.closest("a");

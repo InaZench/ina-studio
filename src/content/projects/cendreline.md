@@ -20,4 +20,5 @@ heroAspect: 4/3
 pageLayout: stacked
 nextProject: goutte-d-aigue
 heroPoster: /images/projects/cendreline-poster-4x3.jpg
+heroLoop: /videos/loops/cendreline-4x3.mp4
 ---

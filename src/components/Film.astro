@@ -2,7 +2,9 @@
 // Ролик с чистой заставкой и своей тонкой кнопкой Play.
 // Кнопки браузера (controls) убираются сразу при разборе страницы и возвращаются после запуска;
 // без JS ролик остаётся со стандартными кнопками. Логика клика — в Layout.astro ([data-film]).
-const { src, poster, aspect = "16/9", label = "Play film", playY, look } = Astro.props;
+const { src, poster, aspect = "16/9", label = "Play film", playY, look, loop } = Astro.props;
+// loop — короткая беззвучная петля (2 с): на компьютере оживает при наведении, на телефоне — когда ролик на экране;
+// после запуска фильма скрывается. Грузится только при первом показе (preload="none").
 // playY — кнопка не по центру, а на этой высоте (по центру по горизонтали), меньше на телефоне:
 // для заставок, где в центре продукт (Goutte d’Aigue: кнопка на прозрачном дне флакона, под жидкостью).
 // look="clear" — почти прозрачная кнопка (тонкий белый контур и значок, без заливки), одинаковая на всех роликах проекта;
@@ -29,6 +31,20 @@ const stroke = "#fff";
     preload="metadata"
   />
   <script is:inline>document.currentScript.previousElementSibling.removeAttribute("controls");</script>
+  {loop && (
+    <video
+      class="film-loop"
+      data-film-loop
+      src={loop}
+      muted
+      loop
+      playsinline
+      preload="none"
+      aria-hidden="true"
+      tabindex="-1"
+      style={`aspect-ratio: ${aspect}; object-fit: contain;`}
+    />
+  )}
   <button
     type="button"
     aria-label={label}
