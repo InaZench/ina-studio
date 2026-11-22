@@ -35,16 +35,20 @@ const notes = rest.join("\n\n");
       <div class="grid grid-cols-1 md:grid-cols-[7fr_5fr] gap-y-14 md:gap-y-0 md:gap-x-40 mt-14 md:mt-32">
         <!-- как на странице телефона: строка про ИИ и Brief сдвинуты на 52 px к краю (фраза — на прежнем месте), низ Brief — на 58 px ниже подписи вертикального ролика -->
         <div class="flex flex-col md:justify-between md:col-start-1 md:row-start-1">
-          <div class="hidden md:block pt-[12%]">
-            <p data-reveal class="hidden md:block max-w-[540px] mx-auto text-center font-serif font-light text-[30px] leading-[1.55] text-[#8B6F47] whitespace-pre-line" style="text-wrap: balance;">{project.objective}</p>
+          <!-- фраза с нотами: та же ось, что у строки про ИИ и Brief (ширина 520, сдвиг 52 px), по высоте —
+               в оптическом центре свободного места над ними (центр на ~42 % высоты, как фраза на странице телефона) -->
+          <div class="hidden md:flex flex-col flex-1 md:max-w-[520px] md:-translate-x-[min(52px,max(12px,calc((100vw-1140px)/2-28px)))]">
+            <div style="flex: 0.553 1 0"></div>
+            <p data-reveal class="mx-auto text-center font-serif font-light text-[30px] leading-[1.55] text-[#8B6F47] whitespace-pre-line" style="text-wrap: balance;">{project.objective}</p>
+            <div style="flex: 0.447 1 0"></div>
           </div>
           <div class="flex flex-col md:block mt-2 md:mt-24 md:translate-y-[44px] md:-translate-x-[min(52px,max(12px,calc((100vw-1140px)/2-28px)))]">
       {project.heroNote && (
-        <p data-reveal class="text-[length:min(9px,calc((100vw-48px)/39.6))] leading-[1.9] font-light tracking-[0.03em] whitespace-nowrap text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:w-full md:max-w-[520px]">{project.heroNote}</p>
+        <p data-reveal class="text-[length:min(9px,calc((100vw-48px)/39.6))] leading-[1.9] font-light tracking-[0.03em] [text-wrap:balance] text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:w-full md:max-w-[520px]">{project.heroNote}</p>
       )}
       <div class="md:hidden order-1 text-center font-serif font-light text-[#8B6F47] mb-20">
         <p data-reveal class="text-[24px] leading-[1.45] whitespace-pre-line" style="text-wrap: balance;">{phrase}</p>
-        {notes && (<p data-reveal style="--d: 150ms" class="mt-6 text-[length:min(19px,calc((100vw-48px)/18))] leading-[1.6] whitespace-pre">{notes}</p>)}
+        {notes && (<p data-reveal style="--d: 150ms" class="mt-6 text-[length:min(19px,calc((100vw-48px)/18))] leading-[1.6] whitespace-pre-line [text-wrap:balance]">{notes}</p>)}
       </div>
       <div data-reveal style="--d: 120ms" class="order-3 border-t border-black/[0.08] md:w-full md:max-w-[520px]">
           <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
@@ -78,11 +82,11 @@ const notes = rest.join("\n\n");
         <div class="hidden md:block mb-24"><p data-reveal class="hidden md:block max-w-[540px] mx-auto text-center font-serif font-light text-[30px] leading-[1.55] text-[#8B6F47] whitespace-pre-line" style="text-wrap: balance;">{project.objective}</p></div>
         <div class="flex flex-col w-full md:max-w-[520px]">
       {project.heroNote && (
-        <p data-reveal class="text-[length:min(9px,calc((100vw-48px)/39.6))] leading-[1.9] font-light tracking-[0.03em] whitespace-nowrap text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:text-center">{project.heroNote}</p>
+        <p data-reveal class="text-[length:min(9px,calc((100vw-48px)/39.6))] leading-[1.9] font-light tracking-[0.03em] [text-wrap:balance] text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:text-center">{project.heroNote}</p>
       )}
       <div class="md:hidden order-1 text-center font-serif font-light text-[#8B6F47] mb-20">
         <p data-reveal class="text-[24px] leading-[1.45] whitespace-pre-line" style="text-wrap: balance;">{phrase}</p>
-        {notes && (<p data-reveal style="--d: 150ms" class="mt-6 text-[length:min(19px,calc((100vw-48px)/18))] leading-[1.6] whitespace-pre">{notes}</p>)}
+        {notes && (<p data-reveal style="--d: 150ms" class="mt-6 text-[length:min(19px,calc((100vw-48px)/18))] leading-[1.6] whitespace-pre-line [text-wrap:balance]">{notes}</p>)}
       </div>
       <div data-reveal style="--d: 120ms" class="order-3 border-t border-black/[0.08] md:max-w-[520px]">
           <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
@@ -135,11 +139,11 @@ const notes = rest.join("\n\n");
     )}
     <div class="flex flex-col md:block md:col-start-1 md:row-start-2 mt-2 md:mt-24 md:self-end md:translate-y-[44px] md:-translate-x-[min(52px,max(12px,calc((100vw-1140px)/2-28px)))]">
       {project.heroNote && (
-        <p data-reveal class="text-[length:min(9px,calc((100vw-48px)/39.6))] leading-[1.9] font-light tracking-[0.03em] whitespace-nowrap text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:max-w-[520px]">{project.heroNote}</p>
+        <p data-reveal class="text-[length:min(9px,calc((100vw-48px)/39.6))] leading-[1.9] font-light tracking-[0.03em] [text-wrap:balance] text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:max-w-[520px]">{project.heroNote}</p>
       )}
       <div class="md:hidden order-1 text-center font-serif font-light text-[#8B6F47] mb-20">
         <p data-reveal class="text-[24px] leading-[1.45] whitespace-pre-line" style="text-wrap: balance;">{phrase}</p>
-        {notes && (<p data-reveal style="--d: 150ms" class="mt-6 text-[length:min(19px,calc((100vw-48px)/18))] leading-[1.6] whitespace-pre">{notes}</p>)}
+        {notes && (<p data-reveal style="--d: 150ms" class="mt-6 text-[length:min(19px,calc((100vw-48px)/18))] leading-[1.6] whitespace-pre-line [text-wrap:balance]">{notes}</p>)}
       </div>
       <div data-reveal style="--d: 120ms" class="order-3 border-t border-black/[0.08] md:max-w-[520px]">
           <div class="border-b border-black/[0.08] py-4 flex justify-between items-baseline gap-4">
