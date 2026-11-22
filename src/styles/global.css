@@ -6,6 +6,12 @@
 @import "@fontsource/cormorant-garamond/latin-400.css";
 @import "@fontsource/inter/latin-300.css";
 @import "@fontsource/inter/latin-400.css";
+/* кириллица тех же шрифтов (грузится только если на странице есть русские буквы — например, при переводе браузером) */
+@import "@fontsource/cormorant-garamond/cyrillic-300.css";
+@import "@fontsource/cormorant-garamond/cyrillic-300-italic.css";
+@import "@fontsource/cormorant-garamond/cyrillic-400.css";
+@import "@fontsource/inter/cyrillic-300.css";
+@import "@fontsource/inter/cyrillic-400.css";
 
 /* Запасные шрифты, подогнанные по ширине и высоте строки под Cormorant и Inter:
    пока основной шрифт грузится, текст не «прыгает» (расчёт по метрикам файлов, 20.11.2026) */
