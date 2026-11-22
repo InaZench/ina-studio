@@ -19,8 +19,6 @@ const projects = defineCollection({
     tools: z.string().optional(),
     nextProject: z.string().optional(),
     heroPoster: z.string().optional(),
-    heroLoop: z.string().optional(), // короткая беззвучная петля для живой заставки горизонтального/главного ролика
-    verticalLoop: z.string().optional(), // то же для вертикального
     playLook: z.enum(['clear']).optional(), // 'clear' — прозрачная кнопка Play на всех роликах страницы
     heroPlayY: z.string().optional(), // высота кнопки Play на заставке (напр. '90%'), если по центру она закрывает продукт
     verticalPoster: z.string().optional(),

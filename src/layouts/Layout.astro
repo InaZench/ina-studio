@@ -123,23 +123,13 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
         video.addEventListener("play", () => { video.controls = true; film.classList.add("is-playing"); });
       });
 
-      // Живые заставки роликов на страницах проектов: компьютер — при наведении, телефон — когда ролик на экране.
-      // Петля проявляется, только когда реально пошла (событие playing), уходит плавно; после запуска фильма — стоп.
+      // Живые заставки роликов на страницах проектов — как плитки на главной: кадр медленно приближается
+      // (компьютер — при наведении, телефон — когда ролик на экране); во время просмотра — без приближения.
       const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
       document.querySelectorAll<HTMLElement>("[data-film]").forEach((film) => {
-        const lv = film.querySelector<HTMLVideoElement>("video[data-film-loop]");
-        if (!lv || still) return;
-        let t: number | undefined;
-        const on = () => {
-          if (film.classList.contains("is-playing")) return;
-          clearTimeout(t);
-          lv.play().then(() => film.classList.add("is-live")).catch(() => {});
-        };
-        const off = () => {
-          film.classList.remove("is-live");
-          clearTimeout(t); t = window.setTimeout(() => lv.pause(), 900);
-        };
-        film.querySelector("video:not([data-film-loop])")!.addEventListener("play", () => { off(); });
+        if (still) return;
+        const on = () => { if (!film.classList.contains("is-playing")) film.classList.add("is-live"); };
+        const off = () => film.classList.remove("is-live");
         if (matchMedia("(hover: hover)").matches) {
           film.addEventListener("mouseenter", on);
           film.addEventListener("mouseleave", off);

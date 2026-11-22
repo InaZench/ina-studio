@@ -23,8 +23,6 @@ verticalEyebrow: Vertical version
 pageLayout: stacked
 nextProject: morning-to-night
 heroPoster: /images/projects/goutte-d-aigue-poster-16x9-packshot.jpg
-heroLoop: /videos/loops/goutte-d-aigue-16x9.mp4
-verticalLoop: /videos/loops/goutte-d-aigue-9x16.mp4
 heroPlayY: 58%
 playLook: clear
 verticalPoster: /images/projects/goutte-d-aigue-poster-9x16.jpg

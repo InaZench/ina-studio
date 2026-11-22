@@ -2,9 +2,10 @@
 // Ролик с чистой заставкой и своей тонкой кнопкой Play.
 // Кнопки браузера (controls) убираются сразу при разборе страницы и возвращаются после запуска;
 // без JS ролик остаётся со стандартными кнопками. Логика клика — в Layout.astro ([data-film]).
-const { src, poster, aspect = "16/9", label = "Play film", playY, look, loop } = Astro.props;
-// loop — короткая беззвучная петля (2 с): на компьютере оживает при наведении, на телефоне — когда ролик на экране;
-// после запуска фильма скрывается. Грузится только при первом показе (preload="none").
+const { src, poster, aspect = "16/9", label = "Play film", playY, look } = Astro.props;
+// Живая заставка — как плитки на главной: рамка неподвижна, кадр-постер медленно приближается внутри неё
+// (4.5 % за 1.6 с, плавное торможение). Компьютер — при наведении, телефон — когда ролик на экране.
+// Во время просмотра фильма приближения нет. Логика — в Layout.astro, стили — global.css (.film.is-live).
 // playY — кнопка не по центру, а на этой высоте (по центру по горизонтали), меньше на телефоне:
 // для заставок, где в центре продукт (Goutte d’Aigue: кнопка на прозрачном дне флакона, под жидкостью).
 // look="clear" — почти прозрачная кнопка (тонкий белый контур и значок, без заливки), одинаковая на всех роликах проекта;
@@ -20,9 +21,9 @@ const tone = clear
   : "border-white/80 bg-black/25 backdrop-blur-[3px] shadow-[0_0_28px_rgba(0,0,0,0.28)] group-hover:bg-black/15 group-hover:border-white";
 const stroke = "#fff";
 ---
-<div class="film relative" data-film>
+<div class="film relative overflow-hidden" data-film>
   <video
-    class="block w-full"
+    class="film-video block w-full"
     style={`aspect-ratio: ${aspect}; object-fit: contain; background: #0A0A0A;`}
     src={src}
     poster={poster}
@@ -31,20 +32,6 @@ const stroke = "#fff";
     preload="metadata"
   />
   <script is:inline>document.currentScript.previousElementSibling.removeAttribute("controls");</script>
-  {loop && (
-    <video
-      class="film-loop"
-      data-film-loop
-      src={loop}
-      muted
-      loop
-      playsinline
-      preload="none"
-      aria-hidden="true"
-      tabindex="-1"
-      style={`aspect-ratio: ${aspect}; object-fit: contain;`}
-    />
-  )}
   <button
     type="button"
     aria-label={label}
