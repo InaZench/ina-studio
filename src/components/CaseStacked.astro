@@ -25,7 +25,7 @@ const notes = rest.join("\n\n");
   <div class="max-w-[1140px] mx-auto">
     {project.heroVideo && (
       <div class="mx-auto" style={`max-width: min(100%, calc((100vh - 240px) * ${aw} / ${ah}));`}>
-        <Film src={project.heroVideo} poster={project.heroPoster} aspect={`${aw}/${ah}`} playY={project.heroPlayY} look={project.playLook} />
+        <Film src={project.heroVideo} poster={project.heroPoster} aspect={`${aw}/${ah}`} playY={project.heroPlayY} playSmall={!!project.heroPlayY} look={project.playLook} />
         {project.heroLabel && (
           <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#6B6458] uppercase text-center mt-6">{project.heroLabel}</p>
         )}
@@ -68,7 +68,7 @@ const notes = rest.join("\n\n");
           </div>
         </div>
         <div class="order-first md:order-none md:col-start-2 md:row-start-1">
-          <Film src={project.verticalVideo} poster={project.verticalPoster} aspect="9/16" look={project.playLook} />
+          <Film src={project.verticalVideo} poster={project.verticalPoster} aspect="9/16" playY={project.verticalPlayY} look={project.playLook} />
           <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#6B6458] uppercase text-center mt-6">{project.verticalEyebrow || "Vertical version"}</p>
         </div>
       </div>
@@ -125,7 +125,7 @@ const notes = rest.join("\n\n");
         <div class="hidden md:flex absolute top-0 left-0 right-0 items-center justify-center pb-[24%]" style="aspect-ratio: 1 / 1.05;">
           <p data-reveal class="max-w-[400px] text-center font-serif font-light text-[30px] leading-[1.55] text-[#8B6F47] whitespace-pre-line" style="text-wrap: balance;">{project.objective}</p>
         </div>
-        <Film src={project.verticalVideo} poster={project.verticalPoster} aspect="9/16" look={project.playLook} />
+        <Film src={project.verticalVideo} poster={project.verticalPoster} aspect="9/16" playY={project.verticalPlayY} look={project.playLook} />
         <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#6B6458] uppercase text-center mt-6">{project.verticalEyebrow || "Also in this campaign"}</p>
         {project.verticalCaption && (
           <p class="text-[10px] font-light tracking-[0.25em] text-[#6B6458] uppercase text-center mt-3">{project.verticalCaption}</p>

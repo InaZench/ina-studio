@@ -2,18 +2,18 @@
 // Ролик с чистой заставкой и своей тонкой кнопкой Play.
 // Кнопки браузера (controls) убираются сразу при разборе страницы и возвращаются после запуска;
 // без JS ролик остаётся со стандартными кнопками. Логика клика — в Layout.astro ([data-film]).
-const { src, poster, aspect = "16/9", label = "Play film", playY, look } = Astro.props;
+const { src, poster, aspect = "16/9", label = "Play film", playY, playSmall = false, look } = Astro.props;
 // Живая заставка — как плитки на главной: рамка неподвижна, кадр-постер медленно приближается внутри неё
 // (4.5 % за 1.6 с, плавное торможение). Компьютер — при наведении, телефон — когда ролик на экране.
 // Во время просмотра фильма приближения нет. Логика — в Layout.astro, стили — global.css (.film.is-live).
-// playY — кнопка не по центру, а на этой высоте (по центру по горизонтали), меньше на телефоне:
+// playY — кнопка не по центру, а на этой высоте (по центру по горизонтали); playSmall — меньше на телефоне:
 // для заставок, где в центре продукт (Goutte d’Aigue: кнопка на прозрачном дне флакона, под жидкостью).
 // look="clear" — почти прозрачная кнопка (тонкий белый контур и значок, без заливки), одинаковая на всех роликах проекта;
 // на компьютере 44 px, на телефоне 44 px (или 26 px, если кнопка сдвинута на дно флакона — там мало места)
 const clear = look === "clear";
-const size = playY ? "w-[26px] h-[26px] md:w-[44px] md:h-[44px]"
+const size = playSmall ? "w-[26px] h-[26px] md:w-[44px] md:h-[44px]"
   : clear ? "w-[44px] h-[44px] md:w-[44px] md:h-[44px]" : "w-[44px] h-[44px] md:w-[56px] md:h-[56px]";
-const icon = playY ? "w-[7px] h-[8px] md:w-[10px] md:h-[12px] ml-[1px] md:ml-[2px]"
+const icon = playSmall ? "w-[7px] h-[8px] md:w-[10px] md:h-[12px] ml-[1px] md:ml-[2px]"
   : clear ? "w-[10px] h-[12px] ml-[2px]" : "w-[10px] h-[12px] md:w-[13px] md:h-[15px] ml-[2px]";
 const pos = playY ? `position:absolute;left:50%;top:${playY};translate:-50% -50%;` : "";
 const tone = clear
