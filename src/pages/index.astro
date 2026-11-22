@@ -15,14 +15,14 @@ const selectedWork = cmsWork.slice(0, 4);
 ---
 
 <Layout title="INA — Visual stories for brands">
-<!-- 22.11.2026 (по просьбе): на телефоне шоурил 16:9 виден целиком (object-contain, чуть выше центра — над подписью), а не обрезанная середина; компьютер без изменений -->
+<!-- 22.11.2026 (по просьбе): на телефоне шоурил 16:9 виден целиком (object-contain, сразу под шапкой 55 px — без чёрной полосы сверху), а не обрезанная середина; компьютер без изменений -->
 <section class="relative w-full h-screen overflow-hidden bg-[#0E0E0E]">
   <video
     autoplay
     muted
     loop
     playsinline
-    class="absolute inset-0 w-full h-full object-contain object-[50%_36%] md:object-cover md:object-center opacity-75" style="z-index:0;" preload="auto"
+    class="absolute inset-0 w-full h-full object-contain object-[50%_55px] md:object-cover md:object-center opacity-75" style="z-index:0;" preload="auto"
     poster="/hero-poster.jpg"
   >
     <source src="/0607.mp4" type="video/mp4" />
