@@ -54,7 +54,7 @@ const notesLines = notes.split("\n").map((l) => l.trim()).filter(Boolean);
           </div>
           <div class="flex flex-col md:block mt-2 md:mt-24 md:translate-y-[44px] md:-translate-x-[min(52px,max(12px,calc((100vw-1140px)/2-28px)))]">
       {project.heroNote && (
-        <p data-reveal class="text-[length:min(9px,calc((100vw-48px)/39.6))] leading-[1.9] font-light tracking-[0.03em] [text-wrap:balance] text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:w-full md:max-w-[520px]">{project.heroNote}</p>
+        <p data-reveal class="text-[10px] leading-[1.9] font-light tracking-[0.2em] px-2 md:px-0 [text-wrap:balance] text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:w-full md:max-w-[520px]">{project.heroNote}</p>
       )}
       <div class="md:hidden order-1 text-center font-serif font-light text-[#8B6F47] mb-20">
         <p data-reveal class="text-[24px] leading-[1.45]" style="text-wrap: balance;">{phraseLines.join(" ")}</p>
@@ -82,7 +82,8 @@ const notesLines = notes.split("\n").map((l) => l.trim()).filter(Boolean);
       </div>
           </div>
         </div>
-        <div class="order-first md:order-none md:col-start-2 md:row-start-1">
+        <!-- 22.11.2026: на телефоне вертикальный ролик уже (66 % ширины, по центру) — не громоздкий рядом с горизонтальным; на компьютере без изменений -->
+        <div class="order-first md:order-none md:col-start-2 md:row-start-1 w-[66%] mx-auto md:w-auto md:mx-0">
           <Film src={project.verticalVideo} poster={project.verticalPoster} aspect="9/16" playY={project.verticalPlayY} look={project.playLook} />
           <p class="text-[10px] leading-[15px] font-light tracking-[0.3em] pl-[0.3em] text-[#6B6458] uppercase text-center mt-6">{project.verticalEyebrow || "Vertical version"}</p>
         </div>
@@ -92,7 +93,7 @@ const notesLines = notes.split("\n").map((l) => l.trim()).filter(Boolean);
         <div class="hidden md:block mb-24"><p data-reveal class="hidden md:block max-w-[540px] mx-auto text-center font-serif font-light text-[30px] leading-[1.55] text-[#8B6F47] whitespace-pre-line" style="text-wrap: balance;">{project.objective}</p></div>
         <div class="flex flex-col w-full md:max-w-[520px]">
       {project.heroNote && (
-        <p data-reveal class="text-[length:min(9px,calc((100vw-48px)/39.6))] leading-[1.9] font-light tracking-[0.03em] [text-wrap:balance] text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:text-center">{project.heroNote}</p>
+        <p data-reveal class="text-[10px] leading-[1.9] font-light tracking-[0.2em] px-2 md:px-0 [text-wrap:balance] text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:text-center">{project.heroNote}</p>
       )}
       <div class="md:hidden order-1 text-center font-serif font-light text-[#8B6F47] mb-20">
         <p data-reveal class="text-[24px] leading-[1.45] whitespace-pre-line" style="text-wrap: balance;">{phrase}</p>
@@ -151,7 +152,7 @@ const notesLines = notes.split("\n").map((l) => l.trim()).filter(Boolean);
     )}
     <div class="flex flex-col md:block md:col-start-1 md:row-start-2 mt-2 md:mt-24 md:self-end md:translate-y-[44px] md:-translate-x-[min(52px,max(12px,calc((100vw-1140px)/2-28px)))]">
       {project.heroNote && (
-        <p data-reveal class="text-[length:min(9px,calc((100vw-48px)/39.6))] leading-[1.9] font-light tracking-[0.03em] [text-wrap:balance] text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:max-w-[520px]">{project.heroNote}</p>
+        <p data-reveal class="text-[10px] leading-[1.9] font-light tracking-[0.2em] px-2 md:px-0 [text-wrap:balance] text-center md:text-[9px] md:tracking-[0.12em] lg:text-[10px] lg:tracking-[0.22em] text-[#6B6458] uppercase order-2 mb-8 md:mb-[56px] md:max-w-[520px]">{project.heroNote}</p>
       )}
       <div class="md:hidden order-1 text-center font-serif font-light text-[#8B6F47] mb-20">
         <div data-reveal class="text-[24px] leading-[1.45]">{phraseLines.map((l) => (<p style="text-wrap: balance;">{l}</p>))}</div>
