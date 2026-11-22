@@ -1,17 +1,14 @@
 @import "tailwindcss";
 
-/* Шрифты со своего сервера (Fontsource, лицензия OFL), только латиница */
-@import "@fontsource/cormorant-garamond/latin-300.css";
-@import "@fontsource/cormorant-garamond/latin-300-italic.css";
-@import "@fontsource/cormorant-garamond/latin-400.css";
-@import "@fontsource/inter/latin-300.css";
-@import "@fontsource/inter/latin-400.css";
-/* кириллица тех же шрифтов (грузится только если на странице есть русские буквы — например, при переводе браузером) */
-@import "@fontsource/cormorant-garamond/cyrillic-300.css";
-@import "@fontsource/cormorant-garamond/cyrillic-300-italic.css";
-@import "@fontsource/cormorant-garamond/cyrillic-400.css";
-@import "@fontsource/inter/cyrillic-300.css";
-@import "@fontsource/inter/cyrillic-400.css";
+/* Шрифты со своего сервера (Fontsource, лицензия OFL). Файлы по начертаниям со всеми наборами букв и unicode-range:
+   латиница грузится всегда, кириллица — только если на странице есть русские буквы (например, при переводе браузером).
+   22.11.2026: отдельные файлы latin-/cyrillic-*.css без unicode-range подключать НЕЛЬЗЯ — последний перекрывает
+   латиницу, и английский текст уходит в запасной шрифт. */
+@import "@fontsource/cormorant-garamond/300.css";
+@import "@fontsource/cormorant-garamond/300-italic.css";
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
 
 /* Запасные шрифты, подогнанные по ширине и высоте строки под Cormorant и Inter:
    пока основной шрифт грузится, текст не «прыгает» (расчёт по метрикам файлов, 20.11.2026) */
