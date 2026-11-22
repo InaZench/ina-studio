@@ -9,12 +9,11 @@ const { src, poster, aspect = "16/9", label = "Play film", playY, playSmall = fa
 // playY — кнопка не по центру, а на этой высоте (по центру по горизонтали); playSmall — меньше на телефоне:
 // для заставок, где в центре продукт (Goutte d’Aigue: кнопка на прозрачном дне флакона, под жидкостью).
 // look="clear" — почти прозрачная кнопка (тонкий белый контур и значок, без заливки), одинаковая на всех роликах проекта;
-// на компьютере 44 px, на телефоне 44 px (или 26 px, если кнопка сдвинута на дно флакона — там мало места)
+// размер — стандартный (56 px на компьютере, 44 на телефоне), кроме кнопки на дне флакона (playSmall)
 const clear = look === "clear";
-const size = playSmall ? "w-[26px] h-[26px] md:w-[44px] md:h-[44px]"
-  : clear ? "w-[44px] h-[44px] md:w-[44px] md:h-[44px]" : "w-[44px] h-[44px] md:w-[56px] md:h-[56px]";
-const icon = playSmall ? "w-[7px] h-[8px] md:w-[10px] md:h-[12px] ml-[1px] md:ml-[2px]"
-  : clear ? "w-[10px] h-[12px] ml-[2px]" : "w-[10px] h-[12px] md:w-[13px] md:h-[15px] ml-[2px]";
+// размер: маленькая — только на дне флакона (playSmall); все остальные — стандартные, как на странице телефона
+const size = playSmall ? "w-[26px] h-[26px] md:w-[44px] md:h-[44px]" : "w-[44px] h-[44px] md:w-[56px] md:h-[56px]";
+const icon = playSmall ? "w-[7px] h-[8px] md:w-[10px] md:h-[12px] ml-[1px] md:ml-[2px]" : "w-[10px] h-[12px] md:w-[13px] md:h-[15px] ml-[2px]";
 const pos = playY ? `position:absolute;left:50%;top:${playY};translate:-50% -50%;` : "";
 const tone = clear
   ? "border-white/80 bg-white/[0.04] backdrop-blur-[2px] shadow-[0_0_8px_rgba(20,50,56,0.14)] group-hover:bg-white/10 group-hover:border-white"
