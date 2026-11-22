@@ -11,6 +11,9 @@ export default defineConfig({
     '/work/goutte-d-aigue': '/goutte-d-aigue/',
     '/work/morning-to-night': '/morning-to-night/',
   },
+  // 22.11.2026: стили встраиваются в каждую страницу — после обновления сайта старая страница из кэша
+  // браузера (до 10 мин) не ссылается на удалённый CSS-файл и не открывается «без оформления»
+  build: { inlineStylesheets: 'always' },
   vite: {
     plugins: [tailwindcss()]
   }
