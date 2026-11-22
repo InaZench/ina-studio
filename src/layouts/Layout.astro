@@ -93,8 +93,9 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
     <footer
       class="bg-[#F8F5EF] border-t border-black/[0.08] px-6 md:px-10 py-8 md:py-9"
     >
-      <div class="flex justify-end text-right">
-        <span class="text-[11px] font-light tracking-[0.15em] -mr-[0.15em] text-[#6B6458]">
+      <!-- 22.11.2026: на телефоне надпись по центру (pl = компенсация хвостовой разрядки), на компьютере — справа -->
+      <div class="flex justify-center md:justify-end text-center md:text-right">
+        <span class="text-[11px] font-light tracking-[0.15em] pl-[0.15em] md:pl-0 md:-mr-[0.15em] text-[#6B6458]">
           © 2026 INA STUDIO. ALL RIGHTS RESERVED.
         </span>
       </div>

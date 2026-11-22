@@ -15,21 +15,22 @@ const selectedWork = cmsWork.slice(0, 4);
 ---
 
 <Layout title="INA — Visual stories for brands">
-<!-- 22.11.2026 (по просьбе): на телефоне шоурил 16:9 виден целиком (object-contain, сразу под шапкой 55 px — без чёрной полосы сверху), а не обрезанная середина; компьютер без изменений -->
-<section class="relative w-full h-screen overflow-hidden bg-[#0E0E0E]">
+<!-- 22.11.2026 (по просьбе): на телефоне шоурил 16:9 виден целиком, сразу под шапкой (55 px), текст — сразу под роликом;
+     пустого чёрного поля нет (блок по высоте содержимого, а не во весь экран). Компьютер без изменений: во весь экран, ролик с обрезкой -->
+<section class="relative w-full md:h-screen overflow-hidden bg-[#0E0E0E] pt-[55px] md:pt-0">
   <video
     autoplay
     muted
     loop
     playsinline
-    class="absolute inset-0 w-full h-full object-contain object-[50%_55px] md:object-cover md:object-center opacity-75" style="z-index:0;" preload="auto"
+    class="relative block md:absolute md:inset-0 w-full aspect-video md:aspect-auto md:h-full object-cover opacity-75" style="z-index:0;" preload="auto"
     poster="/hero-poster.jpg"
   >
     <source src="/0607.mp4" type="video/mp4" />
   </video>
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#000000]"></div>
+    <div class="hidden md:block absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#000000]"></div>
 
-    <div class="relative z-10 flex flex-col justify-end h-full px-6 md:px-10 pb-16 md:pb-20 text-white">
+    <div class="relative z-10 flex flex-col justify-end md:h-full px-6 md:px-10 pt-10 md:pt-0 pb-16 md:pb-20 text-white">
       <!-- 22.11.2026 (по просьбе): на телефоне подпись ярче и с лёгкой тенью — на колье её не было видно; компьютер без изменений -->
       <p data-reveal style="--d: 150ms" class="text-[10px] md:text-[11px] font-light tracking-[0.3em] uppercase text-white/85 [text-shadow:0_1px_8px_rgba(0,0,0,0.55)] md:text-white/60 md:[text-shadow:none] mb-5">
         Showreel · 2026
