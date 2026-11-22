@@ -212,6 +212,13 @@ const notesLines = notes.split("\n").map((l) => l.trim()).filter(Boolean);
       </div>
     )}
   </a>
+  <!-- 22.11.2026: явный путь на главную (на телефоне нет наведения, и не всем понятно, что логотип INA ведёт на главную) -->
+  <div class="max-w-[1140px] mx-auto mt-12 md:mt-14">
+    <a href="/" class="group/all inline-flex items-center gap-3 text-[10px] font-light tracking-[0.3em] text-[#6B6458] uppercase hover:text-[#8B6F47] transition-colors duration-700">
+      <svg class="w-[22px] h-[13px] shrink-0 rotate-180 transition-[translate] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover/all:-translate-x-[4px]" viewBox="0 0 34 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M0 10h32M24 2l8 8-8 8"/></svg>
+      <span>All projects</span>
+    </a>
+  </div>
 </section>
 )}
 
