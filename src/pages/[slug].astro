@@ -60,7 +60,7 @@ const note = (project.heroNote || "").replace(/ — /, ": ").replace(/ by INA$/,
 const description = `${project.title} — ${kind} by INA Studio. ${note}.`;
 ---
 
-<Layout title={`${project.title} — INA`} description={description} ogImage={`/og/${slug}.jpg`}>
+<Layout title={`${project.title} — INA`} description={description} ogImage={`/og/${slug}.jpg`} projectNav>
   {project.pageLayout === "stacked" ? (
   <CaseStacked project={project} />
   ) : (
