@@ -55,6 +55,8 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
   </head>
   <body class="bg-[#EFEAE0] text-[#0A0A0A] font-sans antialiased">
     <!-- TOP NAV -->
+    <!-- 23.11.2026: короткие подписи шапки на телефоне (Email / Enquiries) и логотип INA не переводятся браузером —
+         «Электронная почта» в переводе наезжала на логотип, а INA становилось «ИНА» -->
     <nav
       id="top-nav"
       class="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 md:px-10 py-5 md:py-6 bg-[#F8F5EF]/90 backdrop-blur-md border-b border-black/[0.04]"
@@ -73,7 +75,7 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
       ) : (
         <a href="mailto:ina.studio.creative@gmail.com"
           class="group/hl relative text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.2em] md:tracking-[0.22em] text-[#8B6F47] uppercase hover:text-[#6E5636] transition-colors duration-700">
-          <span class="hdr-shine md:hidden">Email</span><span class="hdr-shine hidden md:inline">ina.studio.creative@gmail.com</span>
+          <span translate="no" class="hdr-shine md:hidden">Email</span><span class="hdr-shine hidden md:inline">ina.studio.creative@gmail.com</span>
           <span aria-hidden="true" class="pointer-events-none absolute left-0 -bottom-[3px] h-px w-full bg-[#8B6F47] origin-left scale-x-0 opacity-0 transition-[scale,opacity] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover/hl:scale-x-100 group-hover/hl:opacity-60 group-focus-visible/hl:scale-x-100 group-focus-visible/hl:opacity-60"></span>
         </a>
       )}
@@ -86,20 +88,20 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
         class="group/logo absolute left-1/2 -translate-x-1/2 font-serif text-[20px] md:text-[26px] font-light text-[#8B6F47] hover:text-[#6E5636] transition-colors duration-700"
         style="letter-spacing: 0.42em; padding-left: 0.42em;"
       >
-        <span class="hdr-shine hdr-d1">INA</span>
+        <span translate="no" class="hdr-shine hdr-d1">INA</span>
         <span aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-[3px] h-px w-[60%] bg-current origin-center scale-x-0 opacity-0 transition-[scale,opacity] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover/logo:scale-x-100 group-hover/logo:opacity-60 group-focus-visible/logo:scale-x-100 group-focus-visible/logo:opacity-60"></span>
       </a>
 
       <!-- -mr = хвостовая разрядка последней буквы: правый край текста ровно по полю -->
       {projectNav ? (
         <a href="mailto:ina.studio.creative@gmail.com" class="group/hl relative text-right text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.2em] md:tracking-[0.22em] -mr-[0.2em] md:-mr-[0.22em] text-[#8B6F47] uppercase hover:text-[#6E5636] transition-colors duration-700">
-          <span class="hdr-shine hdr-d2 md:hidden">Email</span><span class="hdr-shine hdr-d2 hidden md:inline">ina.studio.creative@gmail.com</span>
+          <span translate="no" class="hdr-shine hdr-d2 md:hidden">Email</span><span class="hdr-shine hdr-d2 hidden md:inline">ina.studio.creative@gmail.com</span>
           <span aria-hidden="true" class="pointer-events-none absolute left-0 -bottom-[3px] h-px w-[calc(100%-0.22em)] bg-[#8B6F47] origin-left scale-x-0 opacity-0 transition-[scale,opacity] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover/hl:scale-x-100 group-hover/hl:opacity-60 group-focus-visible/hl:scale-x-100 group-focus-visible/hl:opacity-60"></span>
         </a>
       ) : (
         <>
           <!-- 23.11.2026: на главной слоган справа — только блик, не ссылка (по просьбе); на телефоне «Enquiries» — письмо, как было -->
-          <a href="mailto:ina.studio.creative@gmail.com" class="md:hidden text-right text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.2em] md:tracking-[0.22em] -mr-[0.2em] md:-mr-[0.22em] text-[#8B6F47] uppercase"><span class="hdr-shine hdr-d2">Enquiries</span></a>
+          <a href="mailto:ina.studio.creative@gmail.com" class="md:hidden text-right text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.2em] md:tracking-[0.22em] -mr-[0.2em] md:-mr-[0.22em] text-[#8B6F47] uppercase"><span translate="no" class="hdr-shine hdr-d2">Enquiries</span></a>
           <span class="hidden md:inline text-right text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.2em] md:tracking-[0.22em] -mr-[0.2em] md:-mr-[0.22em] text-[#8B6F47] uppercase"><span class="hdr-shine hdr-d2">Let’s create something together</span></span>
         </>
       )}
