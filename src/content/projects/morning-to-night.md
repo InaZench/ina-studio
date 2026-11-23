@@ -11,7 +11,7 @@ objective: |-
   The whole city
   from morning to night
   in the palm of your hand.
-heroNote: AI-generated ad films — concept, generation and editing by INA
+heroNote: AI-generated film — concept, generation and editing by INA
 heroVideo: /videos/projects/Morning_to_Night_4x5.mp4
 heroLabel: Feed version
 heroPoster: /images/projects/morning-to-night-poster-4x5.jpg

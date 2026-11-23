@@ -12,7 +12,7 @@ objective: |-
   Orange Blossom · Bergamot
   Honey · Powdery Iris · White Rose
   Sandalwood · Amber · Soft Musk
-heroNote: AI-generated teaser film — concept, generation and editing by INA
+heroNote: AI-generated film — concept, generation and editing by INA
 heroVideo: /videos/projects/0706.mp4
 coverImage: /images/projects/cendreline-cover.jpg
 previewVideo: /videos/previews/cendreline.mp4
