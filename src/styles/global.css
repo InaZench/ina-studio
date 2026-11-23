@@ -107,3 +107,21 @@ html.js [data-reveal].is-in {
   25% { translate: 8px 0; }
 }
 @media (prefers-reduced-motion: reduce) { .next-arrow { animation: none !important; } }
+
+/* 23.11.2026: почта в нижнем блоке «живая» — по буквам раз в ~6 с медленно проходит мягкий золотой блик (как свет по металлу),
+   подчёркивание остаётся бронзовым; наведение / нажатие — блик останавливается, почта темнеет. Телефон и компьютер. */
+.mail-shine {
+  background-image: linear-gradient(100deg, #8B6F47 0%, #8B6F47 40%, #C9A66B 50%, #8B6F47 60%, #8B6F47 100%);
+  background-size: 300% 100%; background-position: 100% 0;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  text-decoration-color: #8B6F47;
+  animation: mail-glint 6s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+}
+.mail-shine:hover, .mail-shine:active, .mail-shine:focus-visible {
+  animation: none; background-image: none; -webkit-text-fill-color: #6E5636; text-decoration-color: #6E5636;
+}
+@keyframes mail-glint {
+  0%, 30% { background-position: 100% 0; }
+  70%, 100% { background-position: 0% 0; }
+}
+@media (prefers-reduced-motion: reduce) { .mail-shine { animation: none; } }
