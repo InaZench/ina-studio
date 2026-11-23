@@ -9,7 +9,7 @@ tools: Higgsfield, custom compositing
 delivery: Autumn 2026
 objective: |-
   The whole city
-  from morning to night,
+  from morning to night
   in the palm of your hand.
 heroNote: AI-generated ad films — concept, generation and editing by INA
 heroVideo: /videos/projects/Morning_to_Night_4x5.mp4
