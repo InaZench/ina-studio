@@ -91,13 +91,18 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
       </a>
 
       <!-- -mr = хвостовая разрядка последней буквы: правый край текста ровно по полю -->
-      <a href="mailto:ina.studio.creative@gmail.com"
-        class="group/hl relative text-right text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.2em] md:tracking-[0.22em] -mr-[0.2em] md:-mr-[0.22em] text-[#8B6F47] uppercase hover:text-[#6E5636] transition-colors duration-700">
-        {projectNav
-          ? (<><span class="hdr-shine hdr-d2 md:hidden">Email</span><span class="hdr-shine hdr-d2 hidden md:inline">ina.studio.creative@gmail.com</span></>)
-          : (<><span class="hdr-shine hdr-d2 md:hidden">Enquiries</span><span class="hdr-shine hdr-d2 hidden md:inline">Let’s create something together</span></>)}
-        <span aria-hidden="true" class="pointer-events-none absolute left-0 -bottom-[3px] h-px w-[calc(100%-0.22em)] bg-[#8B6F47] origin-left scale-x-0 opacity-0 transition-[scale,opacity] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover/hl:scale-x-100 group-hover/hl:opacity-60 group-focus-visible/hl:scale-x-100 group-focus-visible/hl:opacity-60"></span>
-      </a>
+      {projectNav ? (
+        <a href="mailto:ina.studio.creative@gmail.com" class="group/hl relative text-right text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.2em] md:tracking-[0.22em] -mr-[0.2em] md:-mr-[0.22em] text-[#8B6F47] uppercase hover:text-[#6E5636] transition-colors duration-700">
+          <span class="hdr-shine hdr-d2 md:hidden">Email</span><span class="hdr-shine hdr-d2 hidden md:inline">ina.studio.creative@gmail.com</span>
+          <span aria-hidden="true" class="pointer-events-none absolute left-0 -bottom-[3px] h-px w-[calc(100%-0.22em)] bg-[#8B6F47] origin-left scale-x-0 opacity-0 transition-[scale,opacity] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover/hl:scale-x-100 group-hover/hl:opacity-60 group-focus-visible/hl:scale-x-100 group-focus-visible/hl:opacity-60"></span>
+        </a>
+      ) : (
+        <>
+          <!-- 23.11.2026: на главной слоган справа — только блик, не ссылка (по просьбе); на телефоне «Enquiries» — письмо, как было -->
+          <a href="mailto:ina.studio.creative@gmail.com" class="md:hidden text-right text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.2em] md:tracking-[0.22em] -mr-[0.2em] md:-mr-[0.22em] text-[#8B6F47] uppercase"><span class="hdr-shine hdr-d2">Enquiries</span></a>
+          <span class="hidden md:inline text-right text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.2em] md:tracking-[0.22em] -mr-[0.2em] md:-mr-[0.22em] text-[#8B6F47] uppercase"><span class="hdr-shine hdr-d2">Let’s create something together</span></span>
+        </>
+      )}
     </nav>
 
     {projectNav && (
@@ -114,7 +119,11 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
         <nav class="flex-1 flex flex-col items-center justify-center gap-7 md:gap-9 px-6 pb-20 text-center">
           <a href="/" class="menu-item text-[10px] md:text-[11px] font-light tracking-[0.3em] pl-[0.3em] text-[#6B6458] uppercase hover:text-[#8B6F47] transition-colors duration-700">All projects</a>
           {menuProjects.map((p) => (
-            <a href={`/${p.slug}/`} class={`menu-item font-serif font-light text-[32px] md:text-[48px] leading-[1.1] transition-colors duration-700 ${currentPath === `/${p.slug}/` ? "text-[#6E5636] underline decoration-[0.5px] underline-offset-[8px]" : "text-[#8B6F47] hover:text-[#6E5636]"}`}>{p.title}</a>
+            <!-- 23.11.2026: названия с бликом (как в шапке), постоянное подчёркивание убрано; при наведении — тонкая линия, как у почты в шапке -->
+            <a href={`/${p.slug}/`} class="menu-item group/hl relative font-serif font-light text-[32px] md:text-[48px] leading-[1.1] text-[#8B6F47] hover:text-[#6E5636] transition-colors duration-700">
+              <span class="hdr-shine">{p.title}</span>
+              <span aria-hidden="true" class="pointer-events-none absolute left-0 -bottom-[2px] h-px w-full bg-[#8B6F47] origin-left scale-x-0 opacity-0 transition-[scale,opacity] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover/hl:scale-x-100 group-hover/hl:opacity-60 group-focus-visible/hl:scale-x-100 group-focus-visible/hl:opacity-60"></span>
+            </a>
           ))}
           <a href="mailto:ina.studio.creative@gmail.com" class="menu-item mt-4 text-[10px] md:text-[11px] font-light tracking-[0.2em] pl-[0.2em] text-[#6B6458] uppercase hover:text-[#8B6F47] transition-colors duration-700">ina.studio.creative@gmail.com</a>
         </nav>
