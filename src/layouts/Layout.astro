@@ -65,15 +65,16 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
         <button id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"
           class="group/menu relative -ml-2 p-2 text-[#8B6F47] hover:text-[#6E5636] transition-colors duration-700">
           <span class="block w-[22px] md:w-[26px] h-[9px] md:h-[11px] relative">
-            <span class="absolute left-0 top-0 w-full h-px bg-current"></span>
-            <span class="absolute left-0 top-1/2 w-[70%] h-px bg-current transition-[width] duration-700 group-hover/menu:w-full"></span>
-            <span class="absolute left-0 bottom-0 w-full h-px bg-current"></span>
+            <span class="line-shine absolute left-0 top-0 w-full h-px bg-current"></span>
+            <span class="line-shine absolute left-0 top-1/2 w-[70%] h-px bg-current transition-[width] duration-700 group-hover/menu:w-full"></span>
+            <span class="line-shine absolute left-0 bottom-0 w-full h-px bg-current"></span>
           </span>
         </button>
       ) : (
         <a href="mailto:ina.studio.creative@gmail.com"
-          class="text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.2em] md:tracking-[0.22em] text-[#8B6F47] uppercase hover:text-[#6E5636] transition-colors duration-700">
-          <span class="md:hidden">Email</span><span class="hidden md:inline">ina.studio.creative@gmail.com</span>
+          class="group/hl relative text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.2em] md:tracking-[0.22em] text-[#8B6F47] uppercase hover:text-[#6E5636] transition-colors duration-700">
+          <span class="hdr-shine md:hidden">Email</span><span class="hdr-shine hidden md:inline">ina.studio.creative@gmail.com</span>
+          <span aria-hidden="true" class="pointer-events-none absolute left-0 -bottom-[3px] h-px w-full bg-[#8B6F47] origin-left scale-x-0 opacity-0 transition-[scale,opacity] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover/hl:scale-x-100 group-hover/hl:opacity-60 group-focus-visible/hl:scale-x-100 group-focus-visible/hl:opacity-60"></span>
         </a>
       )}
 
@@ -85,16 +86,17 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
         class="group/logo absolute left-1/2 -translate-x-1/2 font-serif text-[20px] md:text-[26px] font-light text-[#8B6F47] hover:text-[#6E5636] transition-colors duration-700"
         style="letter-spacing: 0.42em; padding-left: 0.42em;"
       >
-        INA
+        <span class="hdr-shine hdr-d1">INA</span>
         <span aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-[3px] h-px w-[60%] bg-current origin-center scale-x-0 opacity-0 transition-[scale,opacity] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover/logo:scale-x-100 group-hover/logo:opacity-60 group-focus-visible/logo:scale-x-100 group-focus-visible/logo:opacity-60"></span>
       </a>
 
       <!-- -mr = хвостовая разрядка последней буквы: правый край текста ровно по полю -->
       <a href="mailto:ina.studio.creative@gmail.com"
-        class="text-right text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.2em] md:tracking-[0.22em] -mr-[0.2em] md:-mr-[0.22em] text-[#8B6F47] uppercase hover:text-[#6E5636] transition-colors duration-700">
+        class="group/hl relative text-right text-[9px] md:text-[11px] leading-[1.6] font-light tracking-[0.2em] md:tracking-[0.22em] -mr-[0.2em] md:-mr-[0.22em] text-[#8B6F47] uppercase hover:text-[#6E5636] transition-colors duration-700">
         {projectNav
-          ? (<><span class="md:hidden">Email</span><span class="hidden md:inline">ina.studio.creative@gmail.com</span></>)
-          : (<><span class="md:hidden">Enquiries</span><span class="hidden md:inline">Let’s create something together</span></>)}
+          ? (<><span class="hdr-shine hdr-d2 md:hidden">Email</span><span class="hdr-shine hdr-d2 hidden md:inline">ina.studio.creative@gmail.com</span></>)
+          : (<><span class="hdr-shine hdr-d2 md:hidden">Enquiries</span><span class="hdr-shine hdr-d2 hidden md:inline">Let’s create something together</span></>)}
+        <span aria-hidden="true" class="pointer-events-none absolute left-0 -bottom-[3px] h-px w-[calc(100%-0.22em)] bg-[#8B6F47] origin-left scale-x-0 opacity-0 transition-[scale,opacity] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover/hl:scale-x-100 group-hover/hl:opacity-60 group-focus-visible/hl:scale-x-100 group-focus-visible/hl:opacity-60"></span>
       </a>
     </nav>
 

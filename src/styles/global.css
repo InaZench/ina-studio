@@ -136,3 +136,22 @@ html.js [data-reveal].is-in {
 .menu-panel.is-open .menu-item:nth-child(4) { transition-delay: 0.18s; }
 .menu-panel.is-open .menu-item:nth-child(5) { transition-delay: 0.24s; }
 @media (prefers-reduced-motion: reduce) { .menu-panel, .menu-panel .menu-item { transition: none; } }
+
+/* 23.11.2026: шапка (главная и страницы проектов) — тот же золотой блик, что у почты внизу; проходит по шапке слева направо
+   (почта/меню → INA → правая надпись) с небольшим сдвигом во времени. Наведение — блик стоп, текст темнеет. */
+.hdr-shine {
+  background-image: linear-gradient(100deg, #8B6F47 0%, #8B6F47 40%, #C9A66B 50%, #8B6F47 60%, #8B6F47 100%);
+  background-size: 300% 100%; background-position: 100% 0;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  animation: mail-glint 6s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+}
+.hdr-d1 { animation-delay: 0.35s; }
+.hdr-d2 { animation-delay: 0.7s; }
+a:hover > .hdr-shine, a:focus-visible > .hdr-shine, a:active > .hdr-shine { animation: none; background-image: none; -webkit-text-fill-color: #6E5636; }
+.line-shine {
+  background-image: linear-gradient(90deg, currentColor 0%, currentColor 40%, #C9A66B 50%, currentColor 60%, currentColor 100%);
+  background-size: 300% 100%; background-position: 100% 0; background-color: transparent;
+  animation: mail-glint 6s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+}
+button:hover .line-shine { animation: none; background-image: none; background-color: currentColor; }
+@media (prefers-reduced-motion: reduce) { .hdr-shine, .line-shine { animation: none; } }
