@@ -8,7 +8,7 @@ format: AI-generated social ad
 tools: Higgsfield, custom compositing
 delivery: Autumn 2026
 objective: |-
-  The whole city,
+  The whole city
   from morning to night,
   in the palm of your hand.
 heroNote: AI-generated ad films — concept, generation and editing by INA
