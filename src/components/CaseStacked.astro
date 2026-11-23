@@ -190,9 +190,9 @@ const notesLines = notes.split("\n").map((l) => l.trim()).filter(Boolean);
   <div class="relative max-w-[1140px] mx-auto">
   <a href={`/${next.id}/`} class="group md:border-t md:border-black/[0.08] pt-8 md:pt-16 flex items-center gap-10 md:gap-0">
     <div>
-      <p data-reveal class="flex items-center gap-4 md:gap-5 font-serif font-light text-[30px] md:text-[44px] leading-[1.2] text-[#8B6F47] group-hover:text-[#6E5636] transition-colors duration-700">
+      <p data-reveal class="flex items-center gap-4 md:gap-5 font-serif font-light text-[30px] md:text-[44px] leading-[1.2] text-[#8B6F47] group-hover:text-[#6E5636] group-active:text-[#6E5636] transition-colors duration-700">
         <span>{next.data.title}</span>
-        <svg class="w-[0.85em] h-[0.5em] translate-y-[0.06em] shrink-0 transition-[translate] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:translate-x-[6px]" viewBox="0 0 34 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0 10h32M24 2l8 8-8 8"/></svg>
+        <svg class="next-arrow w-[0.85em] h-[0.5em] translate-y-[0.06em] shrink-0 transition-[translate] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:translate-x-[6px]" viewBox="0 0 34 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0 10h32M24 2l8 8-8 8"/></svg>
       </p>
     </div>
     {next.data.coverImage && (

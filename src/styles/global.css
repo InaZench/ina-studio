@@ -95,3 +95,15 @@ html.js [data-reveal].is-in {
 
 /* Выделение текста — в тон сайта (бронза), а не стандартное синее */
 ::selection { background-color: rgba(139, 111, 71, 0.24); color: inherit; }
+
+/* 23.11.2026, телефон (нет наведения): стрелка «следующий проект» мягко «зовёт» вправо — показывает, что это переход;
+   при нажатии название темнеет, стрелка уходит вправо. На компьютере — как раньше (по наведению). */
+@media (max-width: 767px) {
+  .next-arrow { animation: next-nudge 2.4s cubic-bezier(0.45, 0, 0.25, 1) infinite; }
+  .group:active .next-arrow { animation: none; translate: 10px 0; }
+}
+@keyframes next-nudge {
+  0%, 55%, 100% { translate: 0 0; }
+  25% { translate: 8px 0; }
+}
+@media (prefers-reduced-motion: reduce) { .next-arrow { animation: none !important; } }
