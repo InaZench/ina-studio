@@ -22,7 +22,8 @@ const selectedWork = cmsWork.slice(0, 4);
 <!-- 28.11.2026 (по просьбе, вариант Б): вместо шоурила — промо INA во всю яркость, без затемнения; из надписей только «Scroll ↓» на ролике.
      Телефон: вертикальная версия промо 9:16 целиком (без обрезки краёв); компьютер: 16:9 целиком. Прежний шоурил: /0607.mp4, /hero-poster.jpg. -->
 <section class="relative w-full overflow-hidden bg-[#0E0E0E] pt-[55px] md:pt-[67px]">
-  <div class="hero-frame relative w-full aspect-[9/16] md:aspect-video">
+  <!-- 28.11.2026: на компьютере высота ролика = min(16:9, окно − шапка): ролик целиком в окне, края сверху/снизу чуть подрезаются (содержание промо по центру) -->
+  <div class="hero-frame relative w-full aspect-[9/16] md:aspect-auto md:h-[min(56.25vw,calc(100svh-67px))]">
   <video
     autoplay
     muted
