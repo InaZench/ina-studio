@@ -19,38 +19,28 @@ const selectedWork = cmsWork.slice(0, 4);
      ролик сразу под шапкой (55 px), кадр 4:3 (почти весь кадр 16:9 виден, ролик крупнее), надписи в пропорциях компьютера: мелкая подпись и нижняя строка заметно меньше заголовка (7 / 26 / 9 px — 22.11.2026: доля экрана как на компьютере: заголовок ≈ 6.5 % ширины).
      Компьютер без изменений: во весь экран. -->
 <!-- 22.11.2026: на компьютере ролик под шапкой (67 px) и целиком 16:9 — без обрезки сверху/снизу на широких экранах -->
+<!-- 28.11.2026 (по просьбе, вариант Б): вместо шоурила — промо INA во всю яркость, без затемнения; из надписей только «Scroll ↓» на ролике.
+     Телефон: вертикальная версия промо 9:16 целиком (без обрезки краёв); компьютер: 16:9 целиком. Прежний шоурил: /0607.mp4, /hero-poster.jpg. -->
 <section class="relative w-full overflow-hidden bg-[#0E0E0E] pt-[55px] md:pt-[67px]">
-  <div class="hero-frame relative w-full aspect-[4/3] md:aspect-video">
+  <div class="hero-frame relative w-full aspect-[9/16] md:aspect-video">
   <video
     autoplay
     muted
     loop
     playsinline
-    class="absolute inset-0 w-full h-full object-cover opacity-75" style="z-index:0;" preload="auto"
-    poster="/hero-poster.jpg"
+    class="absolute inset-0 w-full h-full object-cover" style="z-index:0;" preload="auto"
+    poster="/hero-ina-promo-poster.jpg"
   >
-    <source src="/0607.mp4" type="video/mp4" />
+    <source src="/hero-ina-promo-9x16.mp4" type="video/mp4" media="(max-width: 767px)" />
+    <source src="/hero-ina-promo.mp4" type="video/mp4" />
   </video>
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#000000]"></div>
-
-    <!-- на широком экране кадр выше экрана — надписи прижаты к низу видимой части (не уходят за край) -->
-    <div class="relative z-10 flex flex-col justify-end h-full md:absolute md:inset-x-0 md:top-0 md:h-[min(100%,calc(100svh-67px))] px-6 md:px-10 pb-5 md:pb-20 text-white">
-      <p data-reveal style="--d: 150ms" class="text-[7px] md:text-[11px] font-light tracking-[0.3em] uppercase text-white/70 [text-shadow:0_1px_6px_rgba(0,0,0,0.6)] md:text-white/60 md:[text-shadow:none] mb-1.5 md:mb-5">
-        Showreel · 2026
-      </p>
-      <h1 class="font-serif font-light leading-[1.05] text-[26px] md:text-[88px] max-w-4xl">
-        <span data-reveal class="block" style="--d: 300ms">Visual stories</span>
-        <span data-reveal class="block" style="--d: 450ms">for brands.</span>
-      </h1>
-      <p data-reveal style="--d: 700ms" class="font-serif text-[9px] md:text-[24px] font-light text-white/70 mt-2 md:mt-6 max-w-xl">
-        Fragrance · Technology
-      </p>
-    </div>
-
-    <div data-reveal style="--d: 1000ms" class="absolute bottom-6 right-6 md:bottom-auto md:top-[calc(min(100%,100svh-67px)-3.25rem)] md:right-10 -mr-[0.3em] text-[7px] md:text-[10px] font-light tracking-[0.3em] uppercase text-white/50">
+    <div data-reveal style="--d: 1000ms" class="absolute bottom-5 right-6 md:bottom-auto md:top-[calc(min(100%,100svh-67px)-3.25rem)] md:right-10 -mr-[0.3em] z-10 text-[8px] md:text-[10px] font-light tracking-[0.3em] uppercase text-white/80 mix-blend-difference">
       Scroll ↓
     </div>
   </div>
+
+  <!-- 28.11.2026 (по просьбе): основные надписи убраны, на ролике только «Scroll ↓» справа внизу; заголовок оставлен для поисковиков и экранных дикторов (невидим) -->
+  <h1 class="sr-only">Visual stories for brands.</h1>
 </section>
 
   <!-- 22.11.2026: на телефоне блок проектов ближе к шоурилу (отступ 128 → 56 px, под заголовком 80 → 48 px) -->
